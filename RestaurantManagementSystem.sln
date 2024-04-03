@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34701.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantManagementSystem", "RestaurantManagementSystem\RestaurantManagementSystem.csproj", "{CFDFE4E4-7058-42F3-A870-CBB65D414C14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantManagementSystem.API", "RestaurantManagementSystem\RestaurantManagementSystem.API.csproj", "{CFDFE4E4-7058-42F3-A870-CBB65D414C14}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{4A9B0ABC-E557-4DBF-A29B-9F10D6FAAB0B}"
 EndProject
@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RMS.Domain.Tests", "RMS.Dom
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RMS.Infrastructure", "RMS.Infrastructure\RMS.Infrastructure.csproj", "{B2F23276-725F-4FDD-A5A0-E12BEB2C9048}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RMS.Infrasturcture.Tests", "RMS.Infrasturcture.Tests\RMS.Infrasturcture.Tests.csproj", "{EA25540D-5A24-4513-A220-47DF3A28D42B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RMS.Infrasturcture.Tests", "RMS.Infrasturcture.Tests\RMS.Infrasturcture.Tests.csproj", "{EA25540D-5A24-4513-A220-47DF3A28D42B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
