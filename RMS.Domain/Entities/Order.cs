@@ -9,6 +9,11 @@ namespace RMS.Domain.Entities
 {
     public class Order : EntityBase
     {
+        public DateTime OrderDate { get; set; }
+
+        public string? OrderLocation { get; set; }
+
         public Customer? Customer { get; set; }
+        
     }
 }

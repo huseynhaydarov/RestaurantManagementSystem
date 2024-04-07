@@ -7,15 +7,12 @@ using System.Threading.Tasks;
 
 namespace RMS.Domain.Entities
 {
-    public class Customer : EntityBase
+    public class RestaurantStaff : EntityBase
     {
         public string? FullName { get; set; }
-
         public string? Email { get; set; }
-
-        public string? Address { get; set; }
-
+        public string? Password { get; set; }
         public string? PhoneNum { get; set; }
-
+        public Menu? Menu { get; set; }
     }
 }
