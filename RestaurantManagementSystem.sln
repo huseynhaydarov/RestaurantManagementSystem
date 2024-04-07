@@ -5,7 +5,7 @@ VisualStudioVersion = 17.9.34701.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantManagementSystem.API", "RestaurantManagementSystem\RestaurantManagementSystem.API.csproj", "{CFDFE4E4-7058-42F3-A870-CBB65D414C14}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{4A9B0ABC-E557-4DBF-A29B-9F10D6FAAB0B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{4A9B0ABC-E557-4DBF-A29B-9F10D6FAAB0B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RMS.API.Tests", "RMS.API.Tests\RMS.API.Tests.csproj", "{8DB02079-3496-413F-9D54-DA0DB4DE827A}"
 EndProject
