@@ -14,7 +14,7 @@ namespace RMS.Domain.Entities
         public string? Location { get; set; }
         public Table? Table { get; set; }
         public decimal TotalPrice { get; set; }
-        public List<OrderItem>? itmes { get; set; }
+        public List<OrderItem>? Itmes { get; set; }
         public OrderType Type { get; set; }
         public Customer? Customer { get; set; }
 

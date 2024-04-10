@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Domain.Abstract
+namespace RMS.Application.Requests.CustomerRequests
 {
-    public abstract class EntityBase
+    internal class CreateCustomerRequestModel : CustomerRequestModel
     {
-        public int Id { get; set; }
     }
 }

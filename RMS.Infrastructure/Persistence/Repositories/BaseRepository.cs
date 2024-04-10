@@ -1,4 +1,5 @@
 ﻿using RMS.Application.Common.Interfaces.Repositories;
+using RMS.Domain.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,8 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RMS.Infrastructure.Persistence.Repositories;
-/*
-public class BaseRepository<TEntity> : IBaseRepository<TEntity>
+
+public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : EntityBase
 {
     public Task<TEntity> Create(TEntity entity)
     {
@@ -34,5 +35,5 @@ public class BaseRepository<TEntity> : IBaseRepository<TEntity>
         throw new NotImplementedException();
     }
 }
-*/
+
 
