@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Domain.Abstract
+namespace RMS.Application.Requests
 {
-    public abstract class EntityBase
+    public abstract class BaseRequest
     {
-        public int Id { get; set; }
     }
 }

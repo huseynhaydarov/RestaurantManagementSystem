@@ -1,13 +1,12 @@
-﻿using RMS.Domain.Abstract;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Domain.Entities
+namespace RMS.Application.Requests.CustomerRequests
 {
-    public class Customer : EntityBase
+    public abstract class CustomerRequestModel
     {
         public string? FullName { get; set; }
 

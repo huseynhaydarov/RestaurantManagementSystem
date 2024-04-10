@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Domain.Abstract
+namespace RMS.Domain.Enum
 {
-    public abstract class EntityBase
+    public enum OrderType
     {
-        public int Id { get; set; }
+        DineIn,
+        Takeout,
+        Delivery
     }
 }

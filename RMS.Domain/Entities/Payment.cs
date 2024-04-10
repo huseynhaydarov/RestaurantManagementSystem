@@ -12,7 +12,8 @@ namespace RMS.Domain.Entities
     {
         public DateTime PaymentDate { get; set; }
         public decimal PaymentAmount { get; set; }
-        public  PaymentType PaymentType;
+        public  PaymentType Type { get; set; }
+        public PaymentStatus Status { get; set; }
         public Order? Order { get; set; }
     }
 }

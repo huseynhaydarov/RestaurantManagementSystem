@@ -1,13 +1,12 @@
-﻿using RMS.Domain.Abstract;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Domain.Entities
+namespace RMS.Application.Responses.CustomerResponses
 {
-    public class Customer : EntityBase
+    public class CustomerResponseModel : BaseResponse
     {
         public string? FullName { get; set; }
 
@@ -16,6 +15,5 @@ namespace RMS.Domain.Entities
         public string? Address { get; set; }
 
         public string? PhoneNumber { get; set; }
-
     }
 }

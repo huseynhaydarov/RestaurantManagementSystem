@@ -34,6 +34,11 @@ namespace RMS.Infrastructure.Persistence.Repositories
         {
             throw new NotImplementedException();
         }
+
+        Task IBaseRepository<Customer>.Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
