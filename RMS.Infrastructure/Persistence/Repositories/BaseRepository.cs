@@ -5,8 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Infrastructure.Persistence.Repositories { }
-
+namespace RMS.Infrastructure.Persistence.Repositories;
+/*
 public class BaseRepository<TEntity> : IBaseRepository<TEntity>
 {
     public Task<TEntity> Create(TEntity entity)
@@ -34,5 +34,5 @@ public class BaseRepository<TEntity> : IBaseRepository<TEntity>
         throw new NotImplementedException();
     }
 }
-
+*/
 
