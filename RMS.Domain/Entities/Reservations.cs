@@ -9,8 +9,9 @@ namespace RMS.Domain.Entities
 {
     public class Reservation : EntityBase
     {
-        public Customer? Customer { get; set; }
+      
         public DateTime Date { get; set; }
-        public int NumofGuests { get; set; }
+        public int NumberOfGuests { get; set; }
+        public Customer? Customer { get; set; }
     }
 }

@@ -9,12 +9,14 @@
 
   <ItemGroup>
     <Compile Remove="Exceptions\**" />
+    <Compile Remove="Exeprions\**" />
     <EmbeddedResource Remove="Exceptions\**" />
+    <EmbeddedResource Remove="Exeprions\**" />
     <None Remove="Exceptions\**" />
+    <None Remove="Exeprions\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Exeprions\" />
     <Folder Include="Mappers\" />
     <Folder Include="Validations\" />
     <Folder Include="Responses\" />
@@ -30,10 +32,12 @@
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0-preview.2.24128.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="9.0.0-preview.2.24128.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0-preview.2.24128.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0-preview.2.24128.5" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0-release-24177-07" />
     <PackageReference Include="Npgsql" Version="8.0.2" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.0-preview.2" />
