@@ -9,12 +9,14 @@
 
   <ItemGroup>
     <Compile Remove="Exceptions\**" />
+    <Compile Remove="Exeprions\**" />
     <EmbeddedResource Remove="Exceptions\**" />
+    <EmbeddedResource Remove="Exeprions\**" />
     <None Remove="Exceptions\**" />
+    <None Remove="Exeprions\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Exeprions\" />
     <Folder Include="Mappers\" />
     <Folder Include="Validations\" />
     <Folder Include="Responses\" />
