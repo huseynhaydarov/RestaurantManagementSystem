@@ -20,6 +20,7 @@ namespace RMS.Domain.Entities
         public Table? Table { get; set; }
         public int TableId { get; set; }
         public Payment? Payment { get; set; }
+        public ICollection<Table>? Tables { get; set; }
 
     }
 }

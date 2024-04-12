@@ -13,7 +13,10 @@ namespace RMS.Infrastructure.Persistence.TablesConfiguration
     {
         public void Configure(EntityTypeBuilder<Table> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(t => t.Id);
+            builder.Property(t => t.Number).IsRequired();
+            builder.Property(t => t.Capacity).IsRequired();
+            builder.Property(t => t.Status).HasConversion<string>();
         }
     }
 }
