@@ -1,4 +1,5 @@
-﻿using RMS.Domain.Enum;
+﻿using RMS.Domain.Abstract;
+using RMS.Domain.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +8,11 @@ using System.Threading.Tasks;
 
 namespace RMS.Domain.Entities
 {
-    public class Table
+    public class Table : EntityBase
     {
         public int Number { get; set; }
         public int Capacity { get; set; }
         public TableStatus Status { get; set; }
+        public ICollection<Order>? Orders { get; set; }
     }
 }

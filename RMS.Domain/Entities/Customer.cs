@@ -16,6 +16,8 @@ namespace RMS.Domain.Entities
         public string? Address { get; set; }
 
         public string? PhoneNumber { get; set; }
+        public ICollection<Order>? Orders { get; set; }
+        public ICollection<Reservation>? Reservations { get; set; }
 
     }
 }
