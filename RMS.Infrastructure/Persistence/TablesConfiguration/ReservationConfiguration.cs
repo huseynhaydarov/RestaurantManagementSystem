@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace RMS.Infrastructure.Persistence.TablesConfiguration
 {
-    public class Reservation : IEntityTypeConfiguration<Reservation>
+    public class ReservationConfiguration : IEntityTypeConfiguration<ReservationConfiguration>
     {
-        public void Configure(EntityTypeBuilder<Reservation> builder)
+        public void Configure(EntityTypeBuilder<ReservationConfiguration> builder)
         {
             throw new NotImplementedException();
         }
