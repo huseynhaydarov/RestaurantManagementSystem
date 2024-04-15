@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Requests.CustomerRequests
 {
-    public abstract class CustomerRequestModel
+    public class CustomerRequestModel : BaseRequest
     {
+        public int Id { get; set; }
         public string? FullName { get; set; }
 
         public string? Email { get; set; }
