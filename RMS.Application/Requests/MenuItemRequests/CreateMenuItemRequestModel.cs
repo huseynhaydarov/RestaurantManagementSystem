@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Application.Requests.CustomerRequests
+namespace RMS.Application.Requests.MenuItemRequestModel
 {
-    public class CreateCustomerRequestModel : CustomerRequestModel
+    public class CreateMenuItemRequestModel : MenuItemRequestModel
     {
-
     }
 }

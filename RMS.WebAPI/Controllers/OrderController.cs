@@ -1,4 +1,5 @@
-﻿namespace RMS.WebAPI.Controllers
+﻿
+namespace RMS.WebAPI.Controllers
 {
     public class OrderController
     {
