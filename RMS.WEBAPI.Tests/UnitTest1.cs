@@ -1,4 +1,4 @@
-namespace RMS.WEBAPI.Tests
+namespace RMS.WebAPI.Tests
 {
     public class Tests
     {
