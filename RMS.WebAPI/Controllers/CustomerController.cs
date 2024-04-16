@@ -20,7 +20,7 @@ namespace RMS.WebAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<CustomerResponseModel>> Create(CreateCustomerRequestModel model)
         {
-            return Ok(_customerService.Create(model));
+            return Ok( await _customerService.Create(model));
         }
     }
 }

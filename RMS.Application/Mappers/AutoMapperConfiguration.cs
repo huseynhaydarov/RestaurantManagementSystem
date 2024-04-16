@@ -27,7 +27,7 @@ namespace RMS.Application.Mappers
         public AutoMapperConfiguration() 
         {
             CreateMap<CreateCustomerRequestModel, Customer>();
-            CreateMap<CustomerResponseModel, Customer>();
+            CreateMap<Customer, CustomerResponseModel>();
             CreateMap<UpdateCustomerRequestModel, Customer>();
 
             CreateMap<CreateMenuItemRequestModel, MenuItem>();
