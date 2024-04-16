@@ -1,7 +1,4 @@
-﻿using RMS.Application.Requests;
-using RMS.Application.Responses;
-using RMS.Domain.Abstract;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,17 +6,11 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Common.Interfaces
 {
-    public interface IBaseService<TEntity, TResponseModel, TRequestModel> 
-        where TEntity : EntityBase
-        where TRequestModel : BaseRequest
-        where TResponseModel : BaseResponse
+    public interface IBaseService<TRequest, TResponse>
     {
-        IEnumerable<TResponseModel> GetAll();
-
-        TResponseModel Get(int id);
-        void Add(TRequestModel request);
-        TRequestModel Update(int id, TRequestModel request);
-        bool Delete(int id);
-
+        Task<TResponse> Create(TRequest request, CancellationToken token = default);
+        Task<TResponse> Update(TRequest request, CancellationToken token = default);
+        Task Delete(TRequest request, CancellationToken token = default);
+        Task<TResponse> GetById(TRequest request, CancellationToken token = default);
     }
 }

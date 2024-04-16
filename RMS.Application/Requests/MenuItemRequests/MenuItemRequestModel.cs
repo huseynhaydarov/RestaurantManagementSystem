@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Requests.MenuItemRequestModel
 {
-    public  class MenuItemRequestModel : BaseRequest
+    public  class MenuItemRequestModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

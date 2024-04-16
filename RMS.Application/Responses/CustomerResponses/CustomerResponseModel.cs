@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Responses.CustomerResponses
 {
-    public class CustomerResponseModel : BaseResponse
+    public class CustomerResponseModel
     {
         public int id { get; set; }
         public string? FullName { get; set; }

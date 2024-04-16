@@ -7,14 +7,12 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Common.Interfaces.Repositories
 {
-    public interface IBaseRepository<T> where T : EntityBase
-    {
-        Task<T> GetById(int id);
-        Task<IEnumerable<T>> GetAll();
-        Task<T> Create(T entity);
-        Task<T> Update(T entity);
-        Task Delete(int id);
-
-
+    public interface IBaseRepository<TEntity> where TEntity : EntityBase
+    {       
+        Task<TEntity> GetAsync(int Id, CancellationToken token = default);
+        Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken token = default);
+        Task<TEntity> CreateAsync(TEntity entity, CancellationToken token = default);
+        Task<bool> UpdateAsync(TEntity entity, CancellationToken token = default);
+        Task<bool> DeleteAsync(TEntity entity, CancellationToken token = default);
     }
 }

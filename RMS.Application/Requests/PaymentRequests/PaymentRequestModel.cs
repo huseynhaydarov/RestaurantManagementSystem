@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Requests.PaymentRequests
 {
-    public class PaymentRequestModel : BaseRequest
+    public class PaymentRequestModel
     {
         public int Id { get; set; }
         public DateTime PaymentDate { get; set; }
