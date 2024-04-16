@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Requests.CustomerRequests
 {
-    public class UpdateCustomerRequestModel : CustomerRequestModel
+    public class UpdateCustomerRequestModel
     {
+        
     }
 }

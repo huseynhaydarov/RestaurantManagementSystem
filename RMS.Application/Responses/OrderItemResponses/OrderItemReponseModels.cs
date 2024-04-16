@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Responses.OrderItemResponses
 {
-    public class OrderItemReponseModels : BaseResponse
+    public class OrderItemReponseModels
     {
         public int Id { get; set; }
     }

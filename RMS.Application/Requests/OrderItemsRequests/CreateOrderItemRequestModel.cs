@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Application.Responses
+namespace RMS.Application.Requests.OrderItemsRequests
 {
-    public abstract class BaseResponse
+    public class CreateOrderItemRequestModel
     {
+
     }
 }

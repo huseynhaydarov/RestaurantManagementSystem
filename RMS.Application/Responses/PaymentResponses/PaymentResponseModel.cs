@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Responses.PaymentResponses
 {
-    public class PaymentResponseModel : BaseResponse
+    public class PaymentResponseModel
     {
         public int Id { get; set; }
     }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Requests.OrderItemsRequests
 {
-    public class OrderItemRequestModel : BaseRequest
+    public class OrderItemRequestModel
     {
         public int Id { get; set; }
         public int MenuId { get; set; }

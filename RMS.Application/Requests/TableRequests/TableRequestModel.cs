@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Requests.TableRequests
 {
-    public class TableRequestModel : BaseRequest
+    public class TableRequestModel
     {
         public int Id { get; set; }
         public int Number { get; set; }

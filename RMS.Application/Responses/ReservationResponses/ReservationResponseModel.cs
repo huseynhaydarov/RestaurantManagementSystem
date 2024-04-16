@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Responses.ReservationResponses
 {
-    public class ReservationResponseModel : BaseResponse
+    public class ReservationResponseModel
     {
         public int Id { get; set; }
     }
