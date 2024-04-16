@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Requests.OrderItemsRequests
 {
-    public class CreaeteOrderItemRequestModel : OrderItemRequestModel
+    public class UpdateOrderItemRequestModel : OrderItemRequestModel
     {
     }
 }
