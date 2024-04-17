@@ -22,5 +22,11 @@ namespace RMS.WebAPI.Controllers
         {
             return Ok( await _customerService.Create(model));
         }
+
+        [HttpGet]
+        public async Task<ActionResult<CustomerResponseModel>> Update(CreateCustomerRequestModel model)
+        {
+
+        }
     }
 }
