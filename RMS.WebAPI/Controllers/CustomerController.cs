@@ -11,40 +11,25 @@ namespace RMS.WebAPI.Controllers;
 [Route("[controller]")]
 public class CustomerController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class OrderController : ControllerBase
+        private readonly ICustomerService _customerService;
+
+        public CustomerController(ICustomerService customerService)
+        {
+            _customerService = customerService;
+        }
+
+    [HttpPost]
+    public void Add(CreateCustomerRequestModel customer)
     {
-        private readonly I _orderService;
+        _customerService.Add(customer);
+    }
 
-        public OrderController(IOrderService orderService)
-        {
-            _orderService = orderService;
-        }
-        [HttpGet("id")]
-        public OrderResponse GetById(int id)
-        {
-            return _orderService.Get(id);
-        }
 
-        [HttpPost]
-        public void Add(CreateOrderRequest order)
-        {
-            _orderService.Add(order);
-        }
+    [HttpDelete("id")]
 
-        [HttpPut("id")]
-        public void Update(int id, CreateOrderRequest order)
-        {
-            _orderService.Update(id, order);
-        }
-
-        [HttpDelete("id")]
-
-        public void Delete(int id)
-        {
-            _orderService.Delete(id);
-        }
+    public void Delete(int id)
+    {
+        _customerService.Delete(id);
     }
 }
 

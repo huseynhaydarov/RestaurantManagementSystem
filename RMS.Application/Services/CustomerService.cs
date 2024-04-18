@@ -2,52 +2,16 @@
 using RMS.Application.Common.Interfaces;
 using AutoMapper;
 using RMS.Domain.Entities;
+using RMS.Application.Requests.CustomerRequests;
+using RMS.Application.Responses.CustomerResponses;
 
 namespace RMS.Application.Services;
 
-public class CustomerService : IBaseService<Customer>
-{
-    private readonly IBaseRepository<Customer> _customerRepository;
-    
-    public CustomerService(IBaseRepository<Customer> customerRepository)
+    public class CustomerService : BaseService<Customer, CustomerRequestModel, CustomerResponseModel>, ICustomerService
     {
-        _customerRepository = customerRepository;
-    }
-
-    public async Task<Customer> CreateAsync(Customer customer, CancellationToken token = default)
-    {
-        return await _customerRepository.CreateAsync(customer, token);
-
-    }
-
-    public async Task<bool> DeleteAsync(int Id, CancellationToken token = default)
-    {
-        var customer = await _customerRepository.GetAsync(Id);
-        if (customer == null)
+        public CustomerService(IMapper mapper, IBaseRepository<Customer> repository) : base(mapper, repository)
         {
-            return false;
         }
-        return await _customerRepository.DeleteAsync(customer, token);
-    }
 
-    public async Task<IEnumerable<Customer>> GetAllAsync(CancellationToken token = default)
-    {
-        return await _customerRepository.GetAllAsync(token);
-    }
-
-    public async Task<Customer> GetAsync(int Id, CancellationToken token = default)
-    {
-        return await _customerRepository.GetAsync(Id, token);
-    }
-
-    public async Task<bool> UpdateAsync(Customer customer, CancellationToken token = default)
-    {
-        var isCustomerExist = await _customerRepository.GetAsync(customer.Id, token);
-
-        if (isCustomerExist == null)
-        {
-            return false;
-        }
-        return await _customerRepository.UpdateAsync(customer, token);
-    }
 }
+
