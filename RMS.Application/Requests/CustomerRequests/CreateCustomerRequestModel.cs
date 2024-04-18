@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Requests.CustomerRequests;
 
-public class CreateCustomerRequestModel
+public class CreateCustomerRequestModel : CustomerRequestModel
 {
     public string? FullName { get; set; }
     public string? Email { get; set; }

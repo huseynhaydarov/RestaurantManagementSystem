@@ -4,7 +4,7 @@ namespace RMS.Application.Common.Interfaces;
 
 public interface IBaseService<TEntity, BaseRequestEntity, BaseResponseEntity> where TEntity : EntityBase
 {
-    public void Create(BaseRequestEntity request);
+    public void Add(BaseRequestEntity request);
 
     public TEntity GetById(int id, CancellationToken token = default);
 

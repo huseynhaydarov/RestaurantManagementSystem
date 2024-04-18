@@ -4,7 +4,7 @@ namespace RMS.Application.Common.Interfaces.Repositories;
 
 public interface IBaseRepository<TEntity> where TEntity : EntityBase
 {       
-    public void Create(TEntity entity, CancellationToken token = default);
+    public void Add(TEntity entity, CancellationToken token = default);
 
     public TEntity GetById(int id, CancellationToken token = default);
 

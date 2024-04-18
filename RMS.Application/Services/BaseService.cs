@@ -12,6 +12,8 @@ namespace RMS.Application.Services
 {
     public abstract class BaseService<TEntity, TBaseRequestEntity, TBaseResponseEntity> : IBaseService<TEntity, TBaseRequestEntity, TBaseResponseEntity> 
         where TEntity : EntityBase
+        where TBaseRequestEntity : class
+        where TBaseResponseEntity : class
     {
         private readonly IBaseRepository<TEntity> _repository;
         private readonly IMapper _mapper;
@@ -21,11 +23,12 @@ namespace RMS.Application.Services
             _mapper = mapper;
             _repository = repository;
         }
-        public void Create(TBaseRequestEntity request)
+        public void Add(TBaseRequestEntity request)
         {
             var mappedEntity = _mapper.Map<TBaseRequestEntity, TEntity>(request);
-            _repository.Create(mappedEntity);
+            _repository.Add(mappedEntity);
         }
+
 
         public bool Delete(int id)
         {
@@ -39,9 +42,12 @@ namespace RMS.Application.Services
 
         public TEntity GetById(int id)
         {
-            var response = _repository.GetById(id);
-            var test = _mapper.Map<TBaseResponseEntity>(response);
-            return test;
+            throw new NotImplementedException();
+        }
+
+        public TEntity GetById(int id, CancellationToken token = default)
+        {
+            throw new NotImplementedException();
         }
 
         public TBaseRequestEntity Update(int id, TBaseRequestEntity requset)

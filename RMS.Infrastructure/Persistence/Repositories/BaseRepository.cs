@@ -18,7 +18,7 @@ public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : 
         _dbSet = context.Set<TEntity>();
     }
 
-    public void Create(TEntity entity, CancellationToken token = default)
+    public void Add(TEntity entity, CancellationToken token = default)
     {
        _dbSet.Add(entity);
         _context.SaveChanges();
