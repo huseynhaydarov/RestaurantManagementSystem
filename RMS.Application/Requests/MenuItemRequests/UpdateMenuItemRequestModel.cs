@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Application.Requests.MenuItemRequestModel
+namespace RMS.Application.Requests.MenuItemRequestModel;
+
+public class UpdateMenuItemRequestModel : MenuItemRequestModel
 {
-    public class UpdateMenuItemRequestModel : MenuItemRequestModel
-    {
-    }
 }

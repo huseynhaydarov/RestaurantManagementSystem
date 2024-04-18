@@ -4,22 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Domain.Enum
-{
-    public enum FoodCategory
-    {
-        MainCourse,
-        Dessert,
-        Beverage,
-        SideDish,
-        Salad,
-        Soup,
-        Breakfast,
-        Brunch,
-        Lunch,
-        Dinner,
-        Snack,
-        Other
-    }
+namespace RMS.Domain.Enum;
 
+public enum FoodCategory
+{
+    MainCourse,
+    Dessert,
+    Beverage,
+    SideDish,
+    Salad,
+    Soup,
+    Breakfast,
+    Brunch,
+    Lunch,
+    Dinner,
+    Snack,
+    Other
 }

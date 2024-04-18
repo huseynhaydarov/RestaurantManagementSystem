@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Application.Requests.TableRequests
-{
-    public class UpdateTableRequestModel : TableRequestModel 
-    {
+namespace RMS.Application.Requests.TableRequests;
 
-    }
+public class UpdateTableRequestModel
+
+
 }

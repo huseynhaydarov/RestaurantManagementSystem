@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Application.Requests.TableRequests
+namespace RMS.Application.Requests.TableRequests;
 {
-    public class CreateTableRequestModel : TableRequestModel
+    public class CreateTableRequestModel 
     {
     }
 }

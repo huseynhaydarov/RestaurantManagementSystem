@@ -2,70 +2,46 @@
 using RMS.Application.Common.Interfaces.Repositories;
 using RMS.Domain.Abstract;
 using RMS.Infrastructure.Persistence.DataBases;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RMS.Infrastructure.Persistence.Repositories;
 
 public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : EntityBase
 {
-    private readonly DbSet<TEntity> _set;
+   
     private readonly EFContext _context;
+    private readonly DbSet<TEntity> _dbSet;
 
     public BaseRepository(EFContext context)
     {
         _context = context;
-        _set = context.Set<TEntity>();
+        _dbSet = context.Set<TEntity>();
     }
 
     public async Task<TEntity> CreateAsync(TEntity entity, CancellationToken token = default)
     {
-        var result = await _set.AddAsync(entity);
+        await _dbSet.AddAsync(entity, token);
         await _context.SaveChangesAsync(token);
-        return result.Entity;
+        return entity;
     }
 
-    public Task Delete(int id)
+    public async Task<bool> DeleteAsync(TEntity entity, CancellationToken token = default)
     {
-        throw new NotImplementedException();
+        _dbSet.Remove(entity);
+        return await _context.SaveChangesAsync(token) > 0;
     }
 
-    public Task<bool> DeleteAsync(TEntity entity, CancellationToken token = default)
+    public async Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken token = default)
     {
-        throw new NotImplementedException();
+        return await _dbSet.ToListAsync(token);
     }
 
-    public Task<IEnumerable<TEntity>> GetAll()
+    public  async Task<TEntity> GetAsync(int Id, CancellationToken token = default)
     {
-        throw new NotImplementedException();
+        return await _dbSet.FindAsync(Id,token);
     }
-
-    public Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken token = default)
+    public async Task<bool> UpdateAsync(TEntity entity, CancellationToken token = default)
     {
-        throw new NotImplementedException();
-    }
-
-    public Task<TEntity> GetAsync(int Id, CancellationToken token = default)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<TEntity> GetById(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<TEntity> Update(TEntity entity)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<bool> UpdateAsync(TEntity entity, CancellationToken token = default)
-    {
-        throw new NotImplementedException();
+        return await _context.SaveChangesAsync(token) > 0;
     }
 }
 

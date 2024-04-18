@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Application.Requests.PaymentRequests
+namespace RMS.Application.Requests.PaymentRequests;
+
+public class UpdatePaymentRequestModel 
 {
-    public class UpdatePaymentRequestModel : PaymentRequestModel
-    {
-    }
 }

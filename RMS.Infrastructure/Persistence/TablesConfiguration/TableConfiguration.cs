@@ -7,16 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Infrastructure.Persistence.TablesConfiguration
+namespace RMS.Infrastructure.Persistence.TablesConfiguration;
+
+public class TableConfiguration : IEntityTypeConfiguration<Table>
 {
-    public class TableConfiguration : IEntityTypeConfiguration<Table>
+    public void Configure(EntityTypeBuilder<Table> builder)
     {
-        public void Configure(EntityTypeBuilder<Table> builder)
-        {
-            builder.HasKey(t => t.Id);
-            builder.Property(t => t.Number).IsRequired();
-            builder.Property(t => t.Capacity).IsRequired();
-            builder.Property(t => t.Status).HasConversion<string>();
-        }
+        builder.HasKey(t => t.Id);
+        builder.Property(t => t.Number).IsRequired();
+        builder.Property(t => t.Capacity).IsRequired();
+        builder.Property(t => t.Status).HasConversion<string>();
     }
 }

@@ -5,13 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Application.Requests.OrderItemsRequests
+namespace RMS.Application.Requests.OrderItemsRequests;
+
+public class OrderItemRequestModel
 {
-    public class OrderItemRequestModel
-    {
-        public int Id { get; set; }
-        public int MenuId { get; set; }
-        public double Count { get; set; }   
-        public OrderStatus Status { get; set; }
-    }
+    public int Id { get; set; }
+    public int MenuId { get; set; }
+    public double Count { get; set; }   
+    public OrderStatus Status { get; set; }
 }

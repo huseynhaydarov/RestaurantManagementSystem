@@ -1,50 +1,56 @@
 ﻿using RMS.Application.Common.Interfaces.Repositories;
 using RMS.Application.Common.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AutoMapper;
 using RMS.Application.Responses.CustomerResponses;
 using RMS.Application.Requests.CustomerRequests;
 using RMS.Domain.Entities;
 
-namespace RMS.Application.Services
+namespace RMS.Application.Services;
+
+public class CustomerService : IBaseService<Customer>
 {
-    public class CustomerService : ICustomerService
+    private readonly IBaseRepository<Customer> _customerRepository;
+    
+    public CustomerService(IBaseRepository<Customer> customerRepository, IMapper mapper)
     {
-        private readonly ICustomerRepository _customerRepository;
-        private readonly IMapper _mapper;
+        _customerRepository = customerRepository;
+    }
 
-        public CustomerService(ICustomerRepository customerRepository, IMapper mapper)
+    public async Task<Customer> CreateAsync(Customer customer, CancellationToken token = default)
+    {
+        return await _customerRepository.CreateAsync(customer, token);
+
+    }
+
+    public async Task<bool> DeleteAsync(int Id, CancellationToken token = default)
+    {
+        var customer = await _customerRepository.GetAsync(Id);
+        if (customer == null)
         {
-            _customerRepository = customerRepository;
-            _mapper = mapper;
+            return false;
         }
+        return await _customerRepository.DeleteAsync(customer, token);
+    }
 
-        public async Task<CustomerResponseModel> Create(CustomerRequestModel request, CancellationToken token = default)
+    public async Task<IEnumerable<Customer>> GetAllAsync(CancellationToken token = default)
+    {
+        return await _customerRepository.GetAllAsync(token);
+    }
+
+    public async Task<Customer> GetAsync(int Id, CancellationToken token = default)
+    {
+        return await _customerRepository.GetAsync(Id, token);
+    }
+
+    public async Task<bool> UpdateAsync(Customer customer, CancellationToken token = default)
+    {
+        var isCustomerExist = await _customerRepository.GetAsync(customer.Id, token);
+
+        if (isCustomerExist == null)
         {
-            var customer = _mapper.Map<Customer>(request);
-            customer = await _customerRepository.CreateAsync(customer);
-            return _mapper.Map<CustomerResponseModel>(customer);
+            return false;
         }
-
-        public Task Delete(CustomerRequestModel request, CancellationToken token = default)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<CustomerResponseModel> GetById(CustomerRequestModel request, CancellationToken token = default)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<CustomerResponseModel> Update(CustomerRequestModel request, CancellationToken token = default)
-        {
-            throw new NotImplementedException();
-        }
-
-       
+        return await _customerRepository.UpdateAsync(customer, token);
     }
 }

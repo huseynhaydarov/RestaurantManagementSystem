@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Application.Responses.PaymentResponses
+namespace RMS.Application.Responses.PaymentResponses;
+
+public class PaymentResponseModel
 {
-    public class PaymentResponseModel
-    {
-        public int Id { get; set; }
-    }
+    public int Id { get; set; }
 }

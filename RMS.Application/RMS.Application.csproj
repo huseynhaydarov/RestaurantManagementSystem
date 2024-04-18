@@ -10,20 +10,19 @@
   <ItemGroup>
     <Compile Remove="Exceptions\**" />
     <Compile Remove="Exeprions\**" />
+    <Compile Remove="Validations\**" />
     <EmbeddedResource Remove="Exceptions\**" />
     <EmbeddedResource Remove="Exeprions\**" />
+    <EmbeddedResource Remove="Validations\**" />
     <None Remove="Exceptions\**" />
     <None Remove="Exeprions\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Validations\" />
+    <None Remove="Validations\**" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
-    <PackageReference Include="MediatR" Version="12.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.4" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0-preview.2.24128.5" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0-release-24177-07" />
   </ItemGroup>

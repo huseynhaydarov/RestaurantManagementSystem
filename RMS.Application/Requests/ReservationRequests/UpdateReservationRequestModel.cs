@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Application.Requests.ReservationRequests
-{
-    public class UpdateReservationRequestModel : ReservationRequestModel
-    {
+namespace RMS.Application.Requests.ReservationRequests;
 
-    }
+public class UpdateReservationRequestModel
+
+
 }

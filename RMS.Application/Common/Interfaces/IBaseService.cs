@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using RMS.Domain.Abstract;
 
-namespace RMS.Application.Common.Interfaces
+namespace RMS.Application.Common.Interfaces;
+
+public interface IBaseService<TEntity> where TEntity : EntityBase
 {
-    public interface IBaseService<TRequest, TResponse>
-    {
-        Task<TResponse> Create(TRequest request, CancellationToken token = default);
-        Task<TResponse> Update(TRequest request, CancellationToken token = default);
-        Task Delete(TRequest request, CancellationToken token = default);
-        Task<TResponse> GetById(TRequest request, CancellationToken token = default);
-    }
+    Task<TEntity> GetAsync(int Id, CancellationToken token = default);
+
+    Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken token = default);
+
+    Task<TEntity> CreateAsync(TEntity entity, CancellationToken token = default);
+
+    Task<bool> UpdateAsync(TEntity entity, CancellationToken token = default);
+
+    Task<bool> DeleteAsync(int id, CancellationToken token = default);
 }

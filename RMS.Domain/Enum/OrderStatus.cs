@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Domain.Enum
+namespace RMS.Domain.Enum;
+
+public enum OrderStatus
 {
-    public enum OrderStatus
-    {
-        pending,  
-        preparation, 
-        ready, 
-        served
-    }
+    pending,  
+    preparation, 
+    ready, 
+    served
 }
