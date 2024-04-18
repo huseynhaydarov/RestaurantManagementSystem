@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Domain.Enum
+namespace RMS.Domain.Enum;
+
+public enum OrderType
 {
-    public enum OrderType
-    {
-        DineIn,
-        Takeout,
-        Delivery
-    }
+    DineIn,
+    Takeout,
+    Delivery
 }

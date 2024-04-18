@@ -14,46 +14,41 @@ using RMS.Application.Responses.PaymentResponses;
 using RMS.Application.Responses.ReservationResponses;
 using RMS.Application.Responses.TableResponses;
 using RMS.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace RMS.Application.Mappers
+
+namespace RMS.Application.Mappers;
+
+public class AutoMapperConfiguration : Profile
 {
-    public class AutoMapperConfiguration : Profile
+    public AutoMapperConfiguration() 
     {
-        public AutoMapperConfiguration() 
-        {
-            CreateMap<CreateCustomerRequestModel, Customer>();
-            CreateMap<Customer, CustomerResponseModel> ();
-            CreateMap<UpdateCustomerRequestModel, Customer>();
+        CreateMap<CreateCustomerRequestModel, Customer>();
+        CreateMap<Customer, CustomerResponseModel> ();
+        CreateMap<UpdateCustomerRequestModel, Customer>();
 
-            CreateMap<CreateMenuItemRequestModel, MenuItem>();
-            CreateMap<MenuItem, MenuItemResponseModel>();
-            CreateMap<UpdateMenuItemRequestModel, MenuItem>();
+        CreateMap<CreateMenuItemRequestModel, MenuItem>();
+        CreateMap<MenuItem, MenuItemResponseModel>();
+        CreateMap<UpdateMenuItemRequestModel, MenuItem>();
 
 
-            CreateMap<CreateOrderRequestModel, Order>();
-            CreateMap<Order, OrderResponseModel>();
-            CreateMap<UpdateOrderRequestModel, Order>();
+        CreateMap<CreateOrderRequestModel, Order>();
+        CreateMap<Order, OrderResponseModel>();
+        CreateMap<UpdateOrderRequestModel, Order>();
 
-            CreateMap<CreateOrderItemRequestModel, OrderItem>();
-            CreateMap<OrderItem, OrderItemReponseModels>();
-            CreateMap<UpdateOrderRequestModel, OrderItem>();
+        CreateMap<CreateOrderItemRequestModel, OrderItem>();
+        CreateMap<OrderItem, OrderItemReponseModels>();
+        CreateMap<UpdateOrderRequestModel, OrderItem>();
 
-            CreateMap<CreatePaymentRequestModel, Payment>();
-            CreateMap<Payment, PaymentResponseModel>();
-            CreateMap<UpdateOrderRequestModel, Payment>();
+        CreateMap<CreatePaymentRequestModel, Payment>();
+        CreateMap<Payment, PaymentResponseModel>();
+        CreateMap<UpdateOrderRequestModel, Payment>();
 
-            CreateMap<CreateReservationRequestModel, Reservation>();
-            CreateMap<Reservation, ReservationResponseModel>();
-            CreateMap<UpdateReservationRequestModel, Reservation>();
+        CreateMap<CreateReservationRequestModel, Reservation>();
+        CreateMap<Reservation, ReservationResponseModel>();
+        CreateMap<UpdateReservationRequestModel, Reservation>();
 
-            CreateMap<CreateTableRequestModel, Table>();
-            CreateMap<Table, TableResponseModel>();
-            CreateMap<UpdateTableRequestModel, Table>();
-        }
+        CreateMap<CreateTableRequestModel, Table>();
+        CreateMap<Table, TableResponseModel>();
+        CreateMap<UpdateTableRequestModel, Table>();
     }
 }

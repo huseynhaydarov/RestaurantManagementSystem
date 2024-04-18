@@ -7,16 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Infrastructure.Persistence.TablesConfiguration
+namespace RMS.Infrastructure.Persistence.TablesConfiguration;
+
+public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
 {
-    public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
+    public void Configure(EntityTypeBuilder<Customer> builder)
     {
-        public void Configure(EntityTypeBuilder<Customer> builder)
-        {
-            builder.HasKey(c => c.Id);
-            builder.Property(c => c.FullName).HasMaxLength(100).IsRequired();
-            builder.Property(c => c.Email).HasMaxLength(100).IsRequired();
-            builder.Property(c => c.PhoneNumber).HasMaxLength(100).IsRequired();
-        }
+        builder.HasKey(c => c.Id);
+        builder.Property(c => c.FullName).HasMaxLength(100).IsRequired();
+        builder.Property(c => c.Email).HasMaxLength(100).IsRequired();
+        builder.Property(c => c.PhoneNumber).HasMaxLength(100).IsRequired();
     }
 }

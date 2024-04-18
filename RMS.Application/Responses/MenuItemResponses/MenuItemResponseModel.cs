@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Application.Responses.MenuItemResponses
+namespace RMS.Application.Responses.MenuItemResponses;
+
+public class MenuItemResponseModel
 {
-    public class MenuItemResponseModel
-    {
-        public int Id { get; set; }
-        public string? Name { get; set; }
-        public string? Description { get; set; }
-        public decimal Price { get; set; }
-    }
+    public int Id { get; set; }
+    public string? Name { get; set; }
+    public string? Description { get; set; }
+    public decimal Price { get; set; }
 }

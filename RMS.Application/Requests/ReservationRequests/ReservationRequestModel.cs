@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Application.Requests.ReservationRequests
+namespace RMS.Application.Requests.ReservationRequests;
+
+public class ReservationRequestModel
 {
-    public class ReservationRequestModel
-    {
-        public int Id { get; set; }
-    }
+    public int Id { get; set; }
 }

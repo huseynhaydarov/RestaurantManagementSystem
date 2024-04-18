@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Application.Requests.OrderRequests
-{
-    public class UpdateOrderRequestModel : OrderRequestModel
-    {
+namespace RMS.Application.Requests.OrderRequests;
 
-    }
+public class UpdateOrderRequestModel
+{
+
 }

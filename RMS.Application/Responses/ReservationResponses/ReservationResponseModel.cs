@@ -5,10 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Application.Responses.ReservationResponses
+namespace RMS.Application.Responses.ReservationResponses;
+
+public class ReservationResponseModel
 {
-    public class ReservationResponseModel
-    {
-        public int Id { get; set; }
-    }
+    public int Id { get; set; }
 }

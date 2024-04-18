@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Application.Responses.TableResponses
+namespace RMS.Application.Responses.TableResponses;
+
+public class TableResponseModel
 {
-    public class TableResponseModel
-    {
-        public int Id { get; set; }
-    }
+    public int Id { get; set; }
 }

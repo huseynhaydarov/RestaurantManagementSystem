@@ -4,15 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Application.Responses.OrderResponses
+namespace RMS.Application.Responses.OrderResponses;
+
+public class OrderResponseModel
 {
-    public class OrderResponseModel
-    {
-        public int Id { get; set; }
-        public DateTime DateTime { get; set; }
-        public string? Location { get; set; }
-        public decimal TotalPrice { get; set; }
-        public int CustomerId { get; set; }
-        public int TableId { get; set; }
-    }
+    public int Id { get; set; }
+    public DateTime DateTime { get; set; }
+    public string? Location { get; set; }
+    public decimal TotalPrice { get; set; }
+    public int CustomerId { get; set; }
+    public int TableId { get; set; }
 }

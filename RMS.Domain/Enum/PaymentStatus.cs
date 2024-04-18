@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Domain.Enum
+namespace RMS.Domain.Enum;
+
+public enum PaymentStatus
 {
-    public enum PaymentStatus
-    {
-        Paid,
-        Unpaid
-    }
+    Paid,
+    Unpaid
 }

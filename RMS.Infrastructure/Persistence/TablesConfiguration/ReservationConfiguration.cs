@@ -7,16 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Infrastructure.Persistence.TablesConfiguration
+namespace RMS.Infrastructure.Persistence.TablesConfiguration;
+
+public class ReservationConfiguration : IEntityTypeConfiguration<Reservation>
 {
-    public class ReservationConfiguration : IEntityTypeConfiguration<Reservation>
+    public void Configure(EntityTypeBuilder<Reservation> builder)
     {
-        public void Configure(EntityTypeBuilder<Reservation> builder)
-        {
-            builder.HasKey(rc => rc.Id);
-            builder.Property(rc => rc.Date).IsRequired();
-            builder.Property(rc => rc.NumberOfGuests).IsRequired();
-            builder.HasOne(rc => rc.Customer).WithMany(rc => rc.Reservations).HasForeignKey(rc => rc.CustomerId);
-        }
+        builder.HasKey(rc => rc.Id);
+        builder.Property(rc => rc.Date).IsRequired();
+        builder.Property(rc => rc.NumberOfGuests).IsRequired();
+        builder.HasOne(rc => rc.Customer).WithMany(rc => rc.Reservations).HasForeignKey(rc => rc.CustomerId);
     }
 }
