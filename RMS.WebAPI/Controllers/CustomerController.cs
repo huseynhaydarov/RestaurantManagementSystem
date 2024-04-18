@@ -11,72 +11,41 @@ namespace RMS.WebAPI.Controllers;
 [Route("[controller]")]
 public class CustomerController : ControllerBase
 {
-    private readonly IBaseService<Customer> _customerService;
-    private readonly IMapper _mapper;
-
-    public CustomerController(IBaseService<Customer> customerService, IMapper mapper)
+    [Route("api/[controller]")]
+    [ApiController]
+    public class OrderController : ControllerBase
     {
-        _customerService = customerService;
-        mapper = _mapper;
-    }
+        private readonly I _orderService;
 
-    [HttpPost(ApiEndpoints.Customer.Create)]
-    public async Task<IActionResult> Create([FromBody] CreateCustomerRequestModel request, CancellationToken token)
-    {
-        var customer = _mapper.Map<Customer>(request);
-
-        var response = await _customerService.CreateAsync(customer, token);
-        return CreatedAtAction(nameof(Get), new { Id = response.Id }, response);
-    }
-    [HttpGet(ApiEndpoints.Customer.Get)]
-    public async Task<IActionResult> Get([FromRoute] int Id, CancellationToken token) 
-    {
-        var isCustomerExist = await _customerService.GetAsync(Id);
-        if (isCustomerExist == null)
+        public OrderController(IOrderService orderService)
         {
-            return NotFound();
+            _orderService = orderService;
         }
-        var response = _mapper.Map<CustomerResponseModel>(isCustomerExist);
-        return  response == null? NotFound() : Ok(response);
-    }
-
-    [HttpGet(ApiEndpoints.Customer.GetAll)]
-    public async Task<IActionResult> GetAll(CancellationToken token)
-    {
-        var buildings = await _customerService.GetAllAsync(token);
-
-        var response = new CustomerResponseModel()
+        [HttpGet("id")]
+        public OrderResponse GetById(int id)
         {
-          
-        };
-
-        return Ok(response);
-    }
-
-    [HttpPut(ApiEndpoints.Customer.Update)]
-    public async Task<IActionResult> Update([FromRoute] int Id, [FromBody] UpdateCustomerRequestModel request, CancellationToken token)
-    {
-        if (request == null)
-        {
-            return BadRequest("Invalid request data.");
+            return _orderService.Get(id);
         }
 
-        Customer building = _mapper.Map<Customer>(request);
+        [HttpPost]
+        public void Add(CreateOrderRequest order)
+        {
+            _orderService.Add(order);
+        }
 
-        await _customerService.UpdateAsync(building, token);
+        [HttpPut("id")]
+        public void Update(int id, CreateOrderRequest order)
+        {
+            _orderService.Update(id, order);
+        }
 
-        var response = _mapper.Map<CustomerRequestModel>(building);
+        [HttpDelete("id")]
 
-        return response == null ? NotFound() : Ok(response);
+        public void Delete(int id)
+        {
+            _orderService.Delete(id);
+        }
     }
-
-    [HttpDelete(ApiEndpoints.Customer.Delete)]
-    public async Task<IActionResult> Delete([FromRoute] int Id, CancellationToken token)
-    {
-        var response = await _customerService.DeleteAsync(Id, token);
-
-        return response ? Ok() : NotFound($"Customer with ID {Id} not found.");
-    }
-}   
+}
 
 

@@ -2,6 +2,7 @@
 using RMS.Application.Common.Interfaces.Repositories;
 using RMS.Domain.Abstract;
 using RMS.Infrastructure.Persistence.DataBases;
+using System.Collections.Generic;
 
 namespace RMS.Infrastructure.Persistence.Repositories;
 
@@ -17,31 +18,32 @@ public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : 
         _dbSet = context.Set<TEntity>();
     }
 
-    public async Task<TEntity> CreateAsync(TEntity entity, CancellationToken token = default)
+    public void Create(TEntity entity, CancellationToken token = default)
     {
-        await _dbSet.AddAsync(entity, token);
-        await _context.SaveChangesAsync(token);
-        return entity;
+       _dbSet.Add(entity);
+        _context.SaveChanges();
     }
 
-    public async Task<bool> DeleteAsync(TEntity entity, CancellationToken token = default)
+    public void Delete(TEntity entity, CancellationToken token = default)
     {
         _dbSet.Remove(entity);
-        return await _context.SaveChangesAsync(token) > 0;
     }
 
-    public async Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken token = default)
+    public IQueryable<TEntity> GetAll(int pageList, int pageNumber, CancellationToken token = default)
     {
-        return await _dbSet.ToListAsync(token);
+        return _dbSet.Skip<TEntity>(pageList * pageNumber).Take<TEntity>(pageList);
     }
 
-    public  async Task<TEntity> GetAsync(int Id, CancellationToken token = default)
+    public TEntity GetById(int id, CancellationToken token = default)
     {
-        return await _dbSet.FindAsync(Id,token);
+        TEntity? foundEntity = _dbSet.Find(id);
+        if (foundEntity == null) throw new ArgumentNullException(nameof(foundEntity));
+        return foundEntity;
     }
-    public async Task<bool> UpdateAsync(TEntity entity, CancellationToken token = default)
+
+    public void Update(TEntity entity, CancellationToken token = default)
     {
-        return await _context.SaveChangesAsync(token) > 0;
+        _dbSet.Update(entity);
     }
 }
 

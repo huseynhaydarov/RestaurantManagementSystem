@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Requests.ReservationRequests;
 
-public class UpdateReservationRequestModel
-
+public class UpdateReservationRequestModel 
+{ 
 
 }

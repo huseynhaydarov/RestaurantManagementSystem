@@ -1,9 +1,6 @@
 ﻿using RMS.Application.Common.Interfaces.Repositories;
 using RMS.Application.Common.Interfaces;
-using System;
 using AutoMapper;
-using RMS.Application.Responses.CustomerResponses;
-using RMS.Application.Requests.CustomerRequests;
 using RMS.Domain.Entities;
 
 namespace RMS.Application.Services;
@@ -12,7 +9,7 @@ public class CustomerService : IBaseService<Customer>
 {
     private readonly IBaseRepository<Customer> _customerRepository;
     
-    public CustomerService(IBaseRepository<Customer> customerRepository, IMapper mapper)
+    public CustomerService(IBaseRepository<Customer> customerRepository)
     {
         _customerRepository = customerRepository;
     }

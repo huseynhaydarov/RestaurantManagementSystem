@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Requests.PaymentRequests;
 
-public class CreatePaymentRequestModel
+public class CreatePaymentRequestModel 
+{
 
 }
+

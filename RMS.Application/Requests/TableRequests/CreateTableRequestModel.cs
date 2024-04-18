@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RMS.Application.Requests.TableRequests;
+public class CreateTableRequestModel 
 {
-    public class CreateTableRequestModel 
-    {
-    }
+
 }
+
