@@ -2,15 +2,15 @@
 
 namespace RMS.Application.Common.Interfaces;
 
-public interface IBaseService<TEntity> where TEntity : EntityBase
+public interface IBaseService<TEntity, BaseRequestEntity, BaseResponseEntity> where TEntity : EntityBase
 {
-    Task<TEntity> GetAsync(int Id, CancellationToken token = default);
+    public void Create(BaseRequestEntity request);
 
-    Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken token = default);
+    public TEntity GetById(int id, CancellationToken token = default);
 
-    Task<TEntity> CreateAsync(TEntity entity, CancellationToken token = default);
+    public IQueryable<TEntity> GetAll(int pageList, int pageNumber, CancellationToken token = default);
 
-    Task<bool> UpdateAsync(TEntity entity, CancellationToken token = default);
+    bool Delete(int id);
 
-    Task<bool> DeleteAsync(int id, CancellationToken token = default);
+    BaseRequestEntity Update(int id, BaseRequestEntity requset);
 }

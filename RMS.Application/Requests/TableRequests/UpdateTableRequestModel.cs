@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 namespace RMS.Application.Requests.TableRequests;
 
 public class UpdateTableRequestModel
-
+{
 
 }
