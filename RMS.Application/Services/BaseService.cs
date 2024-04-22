@@ -28,11 +28,13 @@ namespace RMS.Application.Services
             var mappedEntity = _mapper.Map<TBaseRequestEntity, TEntity>(request);
             _repository.Add(mappedEntity);
         }
-
+ 
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            _repository.FindById(id);
+            return false;
+
         }
 
         public IQueryable<TEntity> GetAll(int pageList, int pageNumber, CancellationToken token = default)
@@ -40,17 +42,19 @@ namespace RMS.Application.Services
             throw new NotImplementedException();
         }
 
-        public TEntity GetById(int id)
+        public TBaseResponseEntity Get(int id, CancellationToken token = default)
         {
-            throw new NotImplementedException();
-        }
-
-        public TEntity GetById(int id, CancellationToken token = default)
-        {
-            throw new NotImplementedException();
+            var response = _repository.FindById(id, token);
+            var test = _mapper.Map<TBaseResponseEntity>(response);
+            return test;
         }
 
         public TBaseRequestEntity Update(int id, TBaseRequestEntity requset)
+        {
+            throw new NotImplementedException();
+        }
+
+        TEntity IBaseService<TEntity, TBaseRequestEntity, TBaseResponseEntity>.GetById(int id, CancellationToken token)
         {
             throw new NotImplementedException();
         }

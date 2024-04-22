@@ -6,7 +6,7 @@ public interface IBaseRepository<TEntity> where TEntity : EntityBase
 {       
     public void Add(TEntity entity, CancellationToken token = default);
 
-    public TEntity GetById(int id, CancellationToken token = default);
+    public TEntity FindById(int id, CancellationToken token = default);
 
     public IQueryable<TEntity> GetAll(int pageList, int pageNumber, CancellationToken token = default);
 

@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using RMS.Application.Common.Interfaces;
 using RMS.Application.Requests.CustomerRequests;
 using RMS.Application.Responses.CustomerResponses;
-using RMS.Domain.Entities;
 
 namespace RMS.WebAPI.Controllers;
 
@@ -24,12 +23,21 @@ public class CustomerController : ControllerBase
         _customerService.Add(customer);
     }
 
+    [HttpGet("id")]
+ 
+
+    [HttpPut("id")]
+    public void Update(int id, CreateCustomerRequestModel customer) 
+    {
+        _customerService.Update(id, customer);
+    }
+
 
     [HttpDelete("id")]
 
     public void Delete(int id)
     {
-        _customerService.Delete(id);
+       _customerService.Delete(id);
     }
 }
 

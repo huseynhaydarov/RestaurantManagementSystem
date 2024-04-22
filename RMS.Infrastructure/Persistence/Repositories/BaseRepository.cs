@@ -34,7 +34,7 @@ public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : 
         return _dbSet.Skip<TEntity>(pageList * pageNumber).Take<TEntity>(pageList);
     }
 
-    public TEntity GetById(int id, CancellationToken token = default)
+    public TEntity FindById(int id, CancellationToken token = default)
     {
         TEntity? foundEntity = _dbSet.Find(id);
         if (foundEntity == null) throw new ArgumentNullException(nameof(foundEntity));

@@ -11,7 +11,6 @@ namespace RMS.Application.Services;
     {
         public CustomerService(IMapper mapper, IBaseRepository<Customer> repository) : base(mapper, repository)
         {
+
         }
-
 }
-

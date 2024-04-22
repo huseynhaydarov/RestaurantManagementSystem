@@ -11,5 +11,6 @@ namespace RMS.Application.Common.Interfaces
 {
     public interface ICustomerService : IBaseService<Customer, CustomerRequestModel, CustomerResponseModel>
     {
+
     }
 }

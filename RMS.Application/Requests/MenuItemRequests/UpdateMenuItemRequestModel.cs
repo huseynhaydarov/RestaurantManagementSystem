@@ -8,4 +8,5 @@ namespace RMS.Application.Requests.MenuItemRequestModel;
 
 public class UpdateMenuItemRequestModel : MenuItemRequestModel
 {
+
 }
