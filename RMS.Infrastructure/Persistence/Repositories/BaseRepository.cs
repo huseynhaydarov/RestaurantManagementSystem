@@ -2,13 +2,12 @@
 using RMS.Application.Common.Interfaces.Repositories;
 using RMS.Domain.Abstract;
 using RMS.Infrastructure.Persistence.DataBases;
-using System.Collections.Generic;
 
 namespace RMS.Infrastructure.Persistence.Repositories;
 
 public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : EntityBase
 {
-   
+
     private readonly EFContext _context;
     private readonly DbSet<TEntity> _dbSet;
 
@@ -18,32 +17,31 @@ public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : 
         _dbSet = context.Set<TEntity>();
     }
 
-    public void Add(TEntity entity, CancellationToken token = default)
+    public async Task<TEntity> CreateAsync(TEntity entity, CancellationToken token = default)
     {
-       _dbSet.Add(entity);
-        _context.SaveChanges();
+        await _dbSet.AddAsync(entity, token);
+        await _context.SaveChangesAsync(token);
+        return entity;
     }
 
-    public void Delete(TEntity entity, CancellationToken token = default)
+    public async Task<bool> DeleteAsync(TEntity entity, CancellationToken token = default)
     {
         _dbSet.Remove(entity);
+        return await _context.SaveChangesAsync(token) > 0;
     }
 
-    public IQueryable<TEntity> GetAll(int pageList, int pageNumber, CancellationToken token = default)
+    public async Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken token = default)
     {
-        return _dbSet.Skip<TEntity>(pageList * pageNumber).Take<TEntity>(pageList);
+        return await _dbSet.ToListAsync(token);
     }
 
-    public TEntity GetById(int id, CancellationToken token = default)
+    public async Task<TEntity> GetAsync(int id, CancellationToken token = default)
     {
-        TEntity? foundEntity = _dbSet.Find(id);
-        if (foundEntity == null) throw new ArgumentNullException(nameof(foundEntity));
-        return foundEntity;
+        return await _dbSet.FirstAsync(x => x.Id == id, token);
     }
-
-    public void Update(TEntity entity, CancellationToken token = default)
+    public async Task<bool> UpdateAsync(TEntity entity, CancellationToken token = default)
     {
-        _dbSet.Update(entity);
+        return await _context.SaveChangesAsync(token) > 0;
     }
 }
 
