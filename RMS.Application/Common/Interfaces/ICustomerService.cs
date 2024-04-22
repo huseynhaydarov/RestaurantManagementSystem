@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Common.Interfaces
 {
-    public interface ICustomerService : IBaseService<Customer, CustomerRequestModel, CustomerResponseModel>
+    public interface ICustomerService : IBaseService<Customer>
     {
 
     }
