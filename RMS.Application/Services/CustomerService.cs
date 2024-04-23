@@ -5,14 +5,9 @@ using RMS.Domain.Entities;
 
 namespace RMS.Application.Services;
 
-public class CustomerService : IBaseService<Customer>
+public class CustomerService(IBaseRepository<Customer> customerRepository) : IBaseService<Customer>
 {
-    private readonly IBaseRepository<Customer> _customerRepository;
-
-    public CustomerService(IBaseRepository<Customer> customerRepository)
-    {
-        _customerRepository = customerRepository;
-    }
+    private readonly IBaseRepository<Customer> _customerRepository = customerRepository;
 
     public async Task<Customer> CreateAsync(Customer customer, CancellationToken token = default)
     {
