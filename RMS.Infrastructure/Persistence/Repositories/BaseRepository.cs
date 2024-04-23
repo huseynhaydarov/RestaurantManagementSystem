@@ -41,6 +41,7 @@ public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : 
     }
     public async Task<bool> UpdateAsync(TEntity entity, CancellationToken token = default)
     {
+        _dbSet.Update(entity);
         return await _context.SaveChangesAsync(token) > 0;
     }
 }

@@ -2,7 +2,7 @@
 
 namespace RMS.Application.Requests.CustomerRequests;
 
-public class UpdateCustomerRequestModel
+public record UpdateCustomerRequestModel
 {
     [JsonIgnore]
     public int Id { get; set; }

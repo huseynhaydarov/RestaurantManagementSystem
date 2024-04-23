@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using RMS.Application.Common.Interfaces;
 using RMS.Application.Common.Interfaces.Repositories;
 using RMS.Application.Mappers;
@@ -6,9 +8,34 @@ using RMS.Application.Services;
 using RMS.Domain.Entities;
 using RMS.Infrastructure.Persistence.DataBases;
 using RMS.Infrastructure.Persistence.Repositories;
+using Swashbuckle.AspNetCore.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<EFContext>()
+    .AddApiEndpoints();
+
+builder.Services.AddAuthentication()
+    .AddBearerToken(IdentityConstants.BearerScheme);
+
+
+builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddSwaggerGen(options =>
+{
+    options.AddSecurityDefinition(name: "Bearer", securityScheme: new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Description = "Enter the Bearer Authorization string as following: `Bearer Generated-JWT-Token`",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer"
+    });
+
+    options.OperationFilter<SecurityRequirementsOperationFilter>();
+});
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -35,6 +62,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.MapGroup("/Account").MapIdentityApi<IdentityUser>();
 
 app.MapControllers();
 

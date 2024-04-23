@@ -23,32 +23,32 @@ public class AutoMapperConfiguration : Profile
     public AutoMapperConfiguration() 
     {
         CreateMap<CreateCustomerRequestModel, Customer>();
-        CreateMap<Customer, CustomerResponseModel> ();
+        CreateMap<Customer, SingleCustomerResponseModel> ();
+        CreateMap<GetAllCustomerRequestModel, GetAllCustomerResponseModel>();
         CreateMap<UpdateCustomerRequestModel, Customer>();
 
         CreateMap<CreateMenuItemRequestModel, MenuItem>();
         CreateMap<MenuItem, MenuItemResponseModel>();
         CreateMap<UpdateMenuItemRequestModel, MenuItem>();
 
+        //CreateMap<CreateOrderRequestModel, Order>();
+        //CreateMap<Order, OrderResponseModel>();
+        //CreateMap<UpdateOrderRequestModel, Order>();
 
-        CreateMap<CreateOrderRequestModel, Order>();
-        CreateMap<Order, OrderResponseModel>();
-        CreateMap<UpdateOrderRequestModel, Order>();
+        //CreateMap<CreateOrderItemRequestModel, OrderItem>();
+        //CreateMap<OrderItem, OrderItemReponseModels>();
+        //CreateMap<UpdateOrderRequestModel, OrderItem>();
 
-        CreateMap<CreateOrderItemRequestModel, OrderItem>();
-        CreateMap<OrderItem, OrderItemReponseModels>();
-        CreateMap<UpdateOrderRequestModel, OrderItem>();
+        //CreateMap<CreatePaymentRequestModel, Payment>();
+        //CreateMap<Payment, PaymentResponseModel>();
+        //CreateMap<UpdateOrderRequestModel, Payment>();
 
-        CreateMap<CreatePaymentRequestModel, Payment>();
-        CreateMap<Payment, PaymentResponseModel>();
-        CreateMap<UpdateOrderRequestModel, Payment>();
+        //CreateMap<CreateReservationRequestModel, Reservation>();
+        //CreateMap<Reservation, ReservationResponseModel>();
+        //CreateMap<UpdateReservationRequestModel, Reservation>();
 
-        CreateMap<CreateReservationRequestModel, Reservation>();
-        CreateMap<Reservation, ReservationResponseModel>();
-        CreateMap<UpdateReservationRequestModel, Reservation>();
-
-        CreateMap<CreateTableRequestModel, Table>();
-        CreateMap<Table, TableResponseModel>();
-        CreateMap<UpdateTableRequestModel, Table>();
+        //CreateMap<CreateTableRequestModel, Table>();
+        //CreateMap<Table, TableResponseModel>();
+        //CreateMap<UpdateTableRequestModel, Table>();
     }
 }
