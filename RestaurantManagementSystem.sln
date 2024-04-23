@@ -23,9 +23,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RMS.Infrastructure", "RMS.I
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RMS.Infrasturcture.Tests", "RMS.Infrasturcture.Tests\RMS.Infrasturcture.Tests.csproj", "{EA25540D-5A24-4513-A220-47DF3A28D42B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RMS.WebAPI", "RMS.WebAPI\RMS.WebAPI.csproj", "{CAB932BB-DC18-48BF-A369-898D0F710DB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RMS.WebAPI", "RMS.WebAPI\RMS.WebAPI.csproj", "{CAB932BB-DC18-48BF-A369-898D0F710DB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RMS.WebAPI.Tests", "RMS.WebAPI.Tests\RMS.WebAPI.Tests.csproj", "{6771302C-7477-46E8-8A9B-B0A9AFEB3C58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RMS.WebAPI.Tests", "RMS.WebAPI.Tests\RMS.WebAPI.Tests.csproj", "{6771302C-7477-46E8-8A9B-B0A9AFEB3C58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RMS.Client", "RMS.Client\RMS.Client.csproj", "{E505A33D-6E73-46CA-81CB-C7AEFF3D6FEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +67,10 @@ Global
 		{6771302C-7477-46E8-8A9B-B0A9AFEB3C58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6771302C-7477-46E8-8A9B-B0A9AFEB3C58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6771302C-7477-46E8-8A9B-B0A9AFEB3C58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E505A33D-6E73-46CA-81CB-C7AEFF3D6FEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E505A33D-6E73-46CA-81CB-C7AEFF3D6FEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E505A33D-6E73-46CA-81CB-C7AEFF3D6FEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E505A33D-6E73-46CA-81CB-C7AEFF3D6FEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

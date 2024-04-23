@@ -34,17 +34,31 @@ public class CustomerController(IBaseService<Customer> customerService, IMapper 
     }
 
     [HttpGet(ApiEndpoints.Customer.GetAll)]
-    public async Task<IActionResult> GetAll(CancellationToken token)
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetAllCustomerResponseModel))]
+    public async Task<IActionResult> GetAll(CancellationToken token = default)
     {
-       var customers = await _customerService.GetAllAsync(token);
+        var customers = await _customerService.GetAllAsync(token);
 
-       var response = new GetAllCustomerResponseModel()
-       {
-           Items = _mapper.Map<IEnumerable<SingleCustomerResponseModel>>(customers)
-       };
+        var response = new GetAllCustomerResponseModel()
+        {
+            Items = _mapper.Map<IEnumerable<SingleCustomerResponseModel>>(customers)
+        };
 
-       return Ok(response);
+        return Ok(response);
     }
+
+    //[HttpGet(ApiEndpoints.Customer.GetAll)]
+    //public async Task<IActionResult> GetAll(CancellationToken token)
+    //{
+    //   var customers = await _customerService.GetAllAsync(token);
+
+    //   var response = new GetAllCustomerResponseModel()
+    //   {
+    //       Items = _mapper.Map<IEnumerable<SingleCustomerResponseModel>>(customers)
+    //   };
+
+    //   return Ok(response);
+    //}
 
     [HttpPut(ApiEndpoints.Customer.Update)]
     public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateCustomerRequestModel? request,
