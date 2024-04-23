@@ -27,13 +27,14 @@ public class AutoMapperConfiguration : Profile
         CreateMap<GetAllCustomerRequestModel, GetAllCustomerResponseModel>();
         CreateMap<UpdateCustomerRequestModel, Customer>();
 
-        CreateMap<CreateMenuItemRequestModel, MenuItem>();
-        CreateMap<MenuItem, MenuItemResponseModel>();
-        CreateMap<UpdateMenuItemRequestModel, MenuItem>();
+        //CreateMap<CreateMenuItemRequestModel, MenuItem>();
+        //CreateMap<MenuItem, MenuItemResponseModel>();
+        //CreateMap<UpdateMenuItemRequestModel, MenuItem>();
 
-        //CreateMap<CreateOrderRequestModel, Order>();
-        //CreateMap<Order, OrderResponseModel>();
-        //CreateMap<UpdateOrderRequestModel, Order>();
+        CreateMap<CreateOrderRequestModel, Order>();
+        CreateMap<Order, SingleOrderResponseModel>();
+        CreateMap<GetAllOrderRequestModel, GetAllOrderResponseModel>();
+        CreateMap<UpdateOrderRequestModel, Order>();
 
         //CreateMap<CreateOrderItemRequestModel, OrderItem>();
         //CreateMap<OrderItem, OrderItemReponseModels>();
