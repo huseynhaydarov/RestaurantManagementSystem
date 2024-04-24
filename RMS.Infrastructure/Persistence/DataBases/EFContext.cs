@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using RMS.Domain.Abstract;
 using RMS.Infrastructure.Persistence.TablesConfiguration;
 using System;
@@ -31,5 +32,13 @@ public class EFContext : DbContext
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(TablesConfiguration.PaymentConfiguration).Assembly);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(TablesConfiguration.ReservationConfiguration).Assembly);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(TablesConfiguration.TableConfiguration).Assembly);
+
+        modelBuilder.Entity<IdentityUser>().ToTable("Users").HasNoKey();
+        modelBuilder.Entity<IdentityRole>().ToTable("Roles").HasNoKey();
+        modelBuilder.Entity<IdentityUserRole<string>>().ToTable("UserRoles").HasNoKey();
+        modelBuilder.Entity<IdentityUserClaim<string>>().ToTable("UserClaims").HasNoKey();
+        modelBuilder.Entity<IdentityUserLogin<string>>().ToTable("UserLogins").HasNoKey();
+        modelBuilder.Entity<IdentityUserToken<string>>().ToTable("UserTokens").HasNoKey();
+        modelBuilder.Entity<IdentityRoleClaim<string>>().ToTable("RoleClaims").HasNoKey();
     }
 }
