@@ -5,10 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Application.Responses.OrderResponses
+namespace RMS.Application.Responses.OrderResponses;
+
+public record GetAllOrderResponseModel
 {
-    public record GetAllOrderResponseModel
-    {
-        public IEnumerable<SingleOrderResponseModel> Items { get; init; } = Enumerable.Empty<SingleOrderResponseModel>();
-    }
+    public IEnumerable<SingleOrderResponseModel> Items { get; init; } = Enumerable.Empty<SingleOrderResponseModel>();
 }

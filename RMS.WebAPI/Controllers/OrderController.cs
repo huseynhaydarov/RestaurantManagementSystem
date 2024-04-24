@@ -45,7 +45,8 @@ public class OrderController(IBaseService<Order> orderService, IMapper mapper) :
         return Ok(response);
     }
     [HttpPut(ApiEndpoints.Order.Update)]
-    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateOrderRequestModel? request, CancellationToken token)
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateOrderRequestModel? request, 
+        CancellationToken token)
     {
         if (request == null)
             return BadRequest("Invalid request data.");
