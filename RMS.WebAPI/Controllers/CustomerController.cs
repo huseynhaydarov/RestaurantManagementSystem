@@ -58,7 +58,7 @@ public class CustomerController(IBaseService<Customer> customerService, IMapper 
         Customer customer = _mapper.Map<Customer>(request);
 
         await _customerService.UpdateAsync(customer, token);
-
+            
         var response = _mapper.Map<SingleCustomerResponseModel>(customer);
 
         return response == null ? NotFound() : Ok(response);
