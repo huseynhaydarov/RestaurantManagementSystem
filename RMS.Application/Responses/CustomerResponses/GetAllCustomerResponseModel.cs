@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Application.Responses.CustomerResponses
+namespace RMS.Application.Responses.CustomerResponses;
+
+public record GetAllCustomerResponseModel
 {
-    public record GetAllCustomerResponseModel
-    {
-        public IEnumerable<SingleCustomerResponseModel> Items { get; init; } = Enumerable.Empty<SingleCustomerResponseModel>();
-    }
+    public IEnumerable<SingleCustomerResponseModel> Items { get; init; } = Enumerable.Empty<SingleCustomerResponseModel>();
 }
