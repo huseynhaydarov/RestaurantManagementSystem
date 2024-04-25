@@ -15,5 +15,6 @@ public class Payment : EntityBase
     public  PaymentType Type { get; set; }
     public PaymentStatus Status { get; set; }
     public Order? Order { get; set; }
-    public int OrderId { get; set; }
+    public int OrderId { get; set; }  
 }
+

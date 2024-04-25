@@ -21,6 +21,7 @@ public class PaymentConfiguration : IEntityTypeConfiguration<Payment>
         builder.Property(p => p.Status).HasConversion<string>().IsRequired();
         builder.HasOne(p => p.Order)
         .WithOne(o => o.Payment)
-        .HasForeignKey<Payment>(p => p.OrderId).IsRequired();
+        .HasForeignKey<Order>(p => p.PaymentId).IsRequired();
     }
 }
+

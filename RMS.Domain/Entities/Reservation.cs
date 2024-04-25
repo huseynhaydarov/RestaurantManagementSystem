@@ -13,4 +13,7 @@ public class Reservation : EntityBase
     public int NumberOfGuests { get; set; }
     public Customer? Customer { get; set; }
     public int CustomerId { get; set; }
+    public Table? Table { get; set; }
+    public int TableId { get; set; }    
+
 }

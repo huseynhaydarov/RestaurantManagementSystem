@@ -12,5 +12,6 @@ public record CreateOrderRequestModel
     public string? Location { get; set; }
     public decimal TotalPrice { get; set; }
     public int CustomerId { get; set; }
+    public int? TableId { get; set; }
 
 }

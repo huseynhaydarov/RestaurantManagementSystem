@@ -30,6 +30,9 @@ public class Order : EntityBase
     
     public ICollection<Table>? Tables { get; set; }
 
-    public Payment Payment { get; set; }
+    public Payment? Payment { get; set; }
+
+    public int PaymentId { get; set; }
+
 
 }
