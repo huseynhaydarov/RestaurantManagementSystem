@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Application.Requests.ReservationRequests;
+namespace RMS.Application.Responses.ReservationResponses;
 
-public record CreateReservationRequestModel
+public class SingleReservationResponseModel
 {
+    public int Id { get; set; }
     public DateTime Date { get; set; }
     public int NumberOfGuests { get; set; }
-    public Customer? Customer { get; set; }
-    public int CustomerId { get; set; }
+  
 }

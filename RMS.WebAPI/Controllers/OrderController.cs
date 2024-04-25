@@ -1,9 +1,12 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using RMS.Application.Common.Interfaces;
+using RMS.Application.Requests.CustomerRequests;
 using RMS.Application.Requests.OrderItemsRequests;
 using RMS.Application.Requests.OrderRequests;
+using RMS.Application.Responses.CustomerResponses;
 using RMS.Application.Responses.OrderResponses;
+using RMS.Application.Services;
 using RMS.Domain.Entities;
 
 namespace RMS.WebAPI.Controllers;
@@ -44,16 +47,27 @@ public class OrderController(IBaseService<Order> orderService, IMapper mapper) :
         };
         return Ok(response);
     }
+
     [HttpPut(ApiEndpoints.Order.Update)]
-    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateOrderRequestModel? request, 
-        CancellationToken token)
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateOrderRequestModel? request,
+    CancellationToken token)
     {
         if (request == null)
+        {
             return BadRequest("Invalid request data.");
-        Order order = _mapper.Map<Order>(request);
+        }
+
+        Order order = await _orderService.GetAsync(id, token);
+
+        order.Location = request.Location;
+        order.TotalPrice = request.TotalPrice;
+        order.OrderTime = request.OrderTime;
+       
         await _orderService.UpdateAsync(order, token);
-        var response = _mapper.Map<SingleOrderResponseModel>(order);
-        return response == null? NotFound() : Ok(response);
+
+        var response = mapper.Map<SingleOrderResponseModel>(order);
+
+        return response == null ? NotFound() : Ok(response);
     }
 
     [HttpDelete(ApiEndpoints.Order.Delete)]

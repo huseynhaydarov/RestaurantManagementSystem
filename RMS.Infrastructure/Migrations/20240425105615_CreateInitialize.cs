@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace RMS.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateInitial : Migration
+    public partial class CreateInitialize : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -155,8 +155,7 @@ namespace RMS.Infrastructure.Migrations
                     Location = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     TotalPrice = table.Column<decimal>(type: "numeric(18,2)", precision: 18, scale: 2, nullable: false),
                     Type = table.Column<string>(type: "text", nullable: false),
-                    CustomerId = table.Column<int>(type: "integer", nullable: false),
-                    TableId = table.Column<int>(type: "integer", nullable: false)
+                    CustomerId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -274,11 +273,6 @@ namespace RMS.Infrastructure.Migrations
                 column: "CustomerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Order_TableId",
-                table: "Order",
-                column: "TableId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_OrderItem_MenuItemId",
                 table: "OrderItem",
                 column: "MenuItemId");
@@ -303,27 +297,11 @@ namespace RMS.Infrastructure.Migrations
                 name: "IX_Table_OrderId",
                 table: "Table",
                 column: "OrderId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Order_Table_TableId",
-                table: "Order",
-                column: "TableId",
-                principalTable: "Table",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Order_Customer_CustomerId",
-                table: "Order");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_Order_Table_TableId",
-                table: "Order");
-
             migrationBuilder.DropTable(
                 name: "OrderItem");
 
@@ -358,13 +336,13 @@ namespace RMS.Infrastructure.Migrations
                 name: "MenuItem");
 
             migrationBuilder.DropTable(
-                name: "Customer");
-
-            migrationBuilder.DropTable(
                 name: "Table");
 
             migrationBuilder.DropTable(
                 name: "Order");
+
+            migrationBuilder.DropTable(
+                name: "Customer");
         }
     }
 }
