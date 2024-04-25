@@ -8,7 +8,7 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Infrastructure.Persistence.TablesConfiguration;
+namespace RMS.Infrastructure.Persistence.DataBases.TablesConfiguration;
 
 public class PaymentConfiguration : IEntityTypeConfiguration<Payment>
 {
@@ -20,8 +20,8 @@ public class PaymentConfiguration : IEntityTypeConfiguration<Payment>
         builder.Property(p => p.Type).HasConversion<string>().IsRequired();
         builder.Property(p => p.Status).HasConversion<string>().IsRequired();
         builder.HasOne(p => p.Order)
-        .WithOne(o => o.Payment)
-        .HasForeignKey<Order>(p => p.PaymentId).IsRequired();
+          .WithOne(o => o.Payment)
+          .HasForeignKey<Payment>(p => p.OrderId).IsRequired();
     }
 }
 

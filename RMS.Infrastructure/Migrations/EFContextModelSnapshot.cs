@@ -58,6 +58,9 @@ namespace RMS.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
                 {
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
+
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("integer");
 
@@ -69,9 +72,6 @@ namespace RMS.Infrastructure.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("boolean");
-
-                    b.Property<string>("Id")
-                        .HasColumnType("text");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("boolean");
@@ -102,6 +102,8 @@ namespace RMS.Infrastructure.Migrations
 
                     b.Property<string>("UserName")
                         .HasColumnType("text");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Users", (string)null);
                 });
@@ -354,6 +356,9 @@ namespace RMS.Infrastructure.Migrations
                     b.Property<int>("NumberOfGuests")
                         .HasColumnType("integer");
 
+                    b.Property<int>("TableId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
@@ -442,7 +447,15 @@ namespace RMS.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("RMS.Domain.Entities.Table", "Table")
+                        .WithMany("Reservations")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Customer");
+
+                    b.Navigation("Table");
                 });
 
             modelBuilder.Entity("RMS.Domain.Entities.Table", b =>
@@ -468,8 +481,7 @@ namespace RMS.Infrastructure.Migrations
                 {
                     b.Navigation("Items");
 
-                    b.Navigation("Payment")
-                        .IsRequired();
+                    b.Navigation("Payment");
 
                     b.Navigation("Tables");
                 });
@@ -477,6 +489,8 @@ namespace RMS.Infrastructure.Migrations
             modelBuilder.Entity("RMS.Domain.Entities.Table", b =>
                 {
                     b.Navigation("Orders");
+
+                    b.Navigation("Reservations");
                 });
 #pragma warning restore 612, 618
         }

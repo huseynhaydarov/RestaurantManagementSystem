@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RMS.Domain.Abstract;
-using RMS.Infrastructure.Persistence.TablesConfiguration;
+using RMS.Infrastructure.Persistence.DataBases.TablesConfiguration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +25,7 @@ public class EFContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.Ignore<EntityBase>();
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(TablesConfiguration.CustomerConfiguration).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(CustomerConfiguration).Assembly);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(TablesConfiguration.MenuItemConfiguration).Assembly);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(TablesConfiguration.OrderItemConfiguration).Assembly);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(TablesConfiguration.OrderItemConfiguration).Assembly);

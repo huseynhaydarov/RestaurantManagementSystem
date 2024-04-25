@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Infrastructure.Persistence.Repositories
+namespace RMS.Infrastructure.Repository
 {
     public class OrderRepository : BaseRepository<Order>, IOrderRepository
     {

@@ -1,13 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using RMS.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace RMS.Infrastructure.Persistence.TablesConfiguration;
+
+namespace RMS.Infrastructure.Persistence.DataBases.TablesConfiguration;
 
 public class OrderConfiguration : IEntityTypeConfiguration<Order>
 {
@@ -26,5 +22,6 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
             .WithMany(o => o.Orders)
             .HasForeignKey(o => o.TableId)
             .OnDelete(DeleteBehavior.Restrict);
+         
     }
 }
