@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RMS.WebAPI", "RMS.WebAPI\RM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RMS.WebAPI.Tests", "RMS.WebAPI.Tests\RMS.WebAPI.Tests.csproj", "{6771302C-7477-46E8-8A9B-B0A9AFEB3C58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RMS.Client", "RMS.Client\RMS.Client.csproj", "{E505A33D-6E73-46CA-81CB-C7AEFF3D6FEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RMS.Client", "RMS.Client\RMS.Client.csproj", "{E505A33D-6E73-46CA-81CB-C7AEFF3D6FEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

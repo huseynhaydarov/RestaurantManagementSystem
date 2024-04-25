@@ -33,7 +33,7 @@ public class EFContext : DbContext
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(TablesConfiguration.ReservationConfiguration).Assembly);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(TablesConfiguration.TableConfiguration).Assembly);
 
-        modelBuilder.Entity<IdentityUser>().ToTable("Users").HasNoKey();
+        modelBuilder.Entity<IdentityUser>().ToTable("Users");
         modelBuilder.Entity<IdentityRole>().ToTable("Roles").HasNoKey();
         modelBuilder.Entity<IdentityUserRole<string>>().ToTable("UserRoles").HasNoKey();
         modelBuilder.Entity<IdentityUserClaim<string>>().ToTable("UserClaims").HasNoKey();

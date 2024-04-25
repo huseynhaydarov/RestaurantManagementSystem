@@ -47,7 +47,7 @@ builder.Services.AddScoped(typeof(IBaseRepository<Order>), typeof(BaseRepository
 builder.Services.AddScoped<IBaseService<Customer>, CustomerService>();
 builder.Services.AddScoped<IBaseService<Order>, OrderService>();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+//builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(AutoMapperConfiguration).Assembly);
 builder.Services.AddDbContext<EFContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
