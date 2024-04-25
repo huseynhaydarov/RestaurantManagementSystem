@@ -1,14 +1,13 @@
-﻿using RMS.Domain.Entities;
-using RMS.Domain.Enum;
+﻿using RMS.Domain.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Application.Requests.TableRequests;
+namespace RMS.Application.Responses.TableResponses;
 
-public class TableRequestModel
+public class SingleTableResponseModel
 {
     public int Number { get; set; }
     public int Capacity { get; set; }

@@ -4,15 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace RMS.Application.Requests.OrderItemsRequests;
 
-public class UpdateOrderItemRequestModel
+public record GetAllOrderItemRequestModel
 {
-    [JsonIgnore]
-    public int Id { get; set; } 
-    public double Count { get; set; }
-    public OrderStatus Status { get; set; }
+    public IEnumerable<OrderItem> Items { get; init; } = Enumerable.Empty<OrderItem>();
 }

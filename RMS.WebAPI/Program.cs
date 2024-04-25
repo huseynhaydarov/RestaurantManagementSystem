@@ -36,6 +36,7 @@ builder.Services.AddSwaggerGen(options =>
 
     options.OperationFilter<SecurityRequirementsOperationFilter>();
 });
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -44,10 +45,19 @@ builder.Services.AddControllers();
 builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 builder.Services.AddScoped(typeof(IBaseRepository<Customer>), typeof(BaseRepository<Customer>));
 builder.Services.AddScoped(typeof(IBaseRepository<Order>), typeof(BaseRepository<Order>));
+builder.Services.AddScoped(typeof(IBaseRepository<MenuItem>), typeof(BaseRepository<MenuItem>));
+builder.Services.AddScoped(typeof(IBaseRepository<OrderItem>), typeof(BaseRepository<OrderItem>));
+
+
+
 builder.Services.AddScoped<IBaseService<Customer>, CustomerService>();
 builder.Services.AddScoped<IBaseService<Order>, OrderService>();
+builder.Services.AddScoped<IBaseService<MenuItem>, MenuItemService>();
+builder.Services.AddScoped<IBaseService<OrderItem>, OrderItemService>();
 builder.Services.AddEndpointsApiExplorer();
+
 //builder.Services.AddSwaggerGen();
+
 builder.Services.AddAutoMapper(typeof(AutoMapperConfiguration).Assembly);
 builder.Services.AddDbContext<EFContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 

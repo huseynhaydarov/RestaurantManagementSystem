@@ -5,9 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Application.Common.Interfaces.Repositories;
-
-public interface  ICustomerRepository : IBaseRepository<Customer>
+namespace RMS.Application.Common.Interfaces.Repositories
 {
+    public interface IOrderItemRepository : IBaseRepository<OrderItem>
+    {
 
+    }
 }

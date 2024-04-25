@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Application.Responses.ReservationResponses;
+namespace RMS.Application.Common.Interfaces.Repositories;
 
-public class ReservationResponseModel
+public interface IMenuItemRepository : IBaseRepository<MenuItem>
 {
-    public int Id { get; set; }
+
 }
