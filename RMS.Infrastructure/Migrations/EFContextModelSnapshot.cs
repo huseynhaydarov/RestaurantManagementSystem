@@ -255,9 +255,6 @@ namespace RMS.Infrastructure.Migrations
                     b.Property<DateTime>("OrderTime")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("TableId")
-                        .HasColumnType("integer");
-
                     b.Property<decimal>("TotalPrice")
                         .HasPrecision(18, 2)
                         .HasColumnType("numeric(18,2)");
@@ -269,8 +266,6 @@ namespace RMS.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
-
-                    b.HasIndex("TableId");
 
                     b.ToTable("Order");
                 });
@@ -402,15 +397,7 @@ namespace RMS.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("RMS.Domain.Entities.Table", "Table")
-                        .WithMany("Orders")
-                        .HasForeignKey("TableId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.Navigation("Customer");
-
-                    b.Navigation("Table");
                 });
 
             modelBuilder.Entity("RMS.Domain.Entities.OrderItem", b =>
@@ -488,8 +475,6 @@ namespace RMS.Infrastructure.Migrations
 
             modelBuilder.Entity("RMS.Domain.Entities.Table", b =>
                 {
-                    b.Navigation("Orders");
-
                     b.Navigation("Reservations");
                 });
 #pragma warning restore 612, 618

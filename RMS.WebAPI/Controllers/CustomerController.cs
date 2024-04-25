@@ -48,18 +48,23 @@ public class CustomerController(IBaseService<Customer> customerService, IMapper 
 
     [HttpPut(ApiEndpoints.Customer.Update)]
     public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateCustomerRequestModel? request,
-        CancellationToken token)
+    CancellationToken token)
     {
         if (request == null)
         {
             return BadRequest("Invalid request data.");
         }
 
-        Customer customer = _mapper.Map<Customer>(request);
+        Customer customer = await _customerService.GetAsync(id, token);
 
+        customer.Email = request.Email;
+        customer.Address = request.Address;
+        customer.PhoneNumber = request.PhoneNumber;
+        customer.FullName = request.FullName;
+        
         await _customerService.UpdateAsync(customer, token);
-            
-        var response = _mapper.Map<SingleCustomerResponseModel>(customer);
+
+        var response = mapper.Map<SingleCustomerResponseModel>(customer);
 
         return response == null ? NotFound() : Ok(response);
     }

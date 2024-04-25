@@ -18,10 +18,5 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
             .HasForeignKey(o => o.CustomerId)
             .OnDelete(DeleteBehavior.Restrict);
         builder.Property(o => o.Type).HasConversion<string>();
-        builder.HasOne(o => o.Table)
-            .WithMany(o => o.Orders)
-            .HasForeignKey(o => o.TableId)
-            .OnDelete(DeleteBehavior.Restrict);
-         
     }
 }
