@@ -9,4 +9,5 @@ public class Table : EntityBase
     public int Capacity { get; set; }
     public TableStatus Status { get; set; }
     public ICollection<Order>? Orders { get; set; }
+    public ICollection<Reservation>? Reservations { get; set; }
 }

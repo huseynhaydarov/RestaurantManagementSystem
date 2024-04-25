@@ -17,5 +17,7 @@ public class ReservationConfiguration : IEntityTypeConfiguration<Reservation>
         builder.Property(rc => rc.Date).IsRequired();
         builder.Property(rc => rc.NumberOfGuests).IsRequired();
         builder.HasOne(rc => rc.Customer).WithMany(rc => rc.Reservations).HasForeignKey(rc => rc.CustomerId);
+        builder.HasOne(rc => rc.Table).WithMany(rc => rc.Reservations).HasForeignKey(rc => rc.CustomerId);
+
     }
 }
