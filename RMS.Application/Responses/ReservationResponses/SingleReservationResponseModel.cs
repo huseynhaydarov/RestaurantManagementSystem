@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Responses.ReservationResponses;
 
-public class SingleReservationResponseModel
+public record SingleReservationResponseModel
 {
     public int Id { get; set; }
     public DateTime Date { get; set; }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Requests.MenuItemRequestModel;
 
-public class UpdateMenuItemRequestModel
+public record UpdateMenuItemRequestModel
 {
     [JsonIgnore]
     public int Id { get; set; }

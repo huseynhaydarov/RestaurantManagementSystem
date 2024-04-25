@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Responses.TableResponses;
 
-public record GetAllTableResponseModel
+public record GetAllReservationTableResponseModel
 {
-    public IEnumerable<SingleTableResponseModel> Items { get; init; } = Enumerable.Empty<SingleTableResponseModel>();
+    public IEnumerable<SingleReservationTableResponseModel> Items { get; init; } = Enumerable.Empty<SingleReservationTableResponseModel>();
 }

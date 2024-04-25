@@ -3,7 +3,7 @@ using RMS.Domain.Enum;
 
 namespace RMS.Domain.Entities;
 
-public class Table : EntityBase
+public class ReservationTable : EntityBase
 {
     public int Number { get; set; }
     public int Capacity { get; set; }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Requests.TableRequests;
 
-public class CreateTableRequestModel 
+public record CreateReservationTableRequestModel 
 {
     public int Number { get; set; }
     public int Capacity { get; set; }
