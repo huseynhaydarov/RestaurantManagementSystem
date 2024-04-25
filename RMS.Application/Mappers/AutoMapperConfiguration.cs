@@ -52,9 +52,9 @@ public class AutoMapperConfiguration : Profile
         CreateMap<GetAllReservationRequestModel, GetAllReservationResponseModel>();
         CreateMap<UpdateReservationRequestModel, Reservation>();
 
-        CreateMap<CreateTableRequestModel, Table>();
-        CreateMap<Table, SingleTableResponseModel>();
-        CreateMap<GetAllTableRequestModel, GetAllTableResponseModel >();
-        CreateMap<UpdateTableRequestModel, Table>();
+        CreateMap<CreateReservationTableRequestModel, Customer>();
+        CreateMap<Customer, SingleReservationTableResponseModel>();
+        CreateMap<GetAllReservationTableRequestModel, GetAllReservationTableResponseModel >();
+        CreateMap<UpdateReservationTableRequestModel, Customer>();
     }
 }

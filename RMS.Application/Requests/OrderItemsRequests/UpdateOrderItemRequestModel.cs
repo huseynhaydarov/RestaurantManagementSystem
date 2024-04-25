@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Requests.OrderItemsRequests;
 
-public class UpdateOrderItemRequestModel
+public record UpdateOrderItemRequestModel
 {
     [JsonIgnore]
     public int Id { get; set; } 

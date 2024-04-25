@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Responses.OrderItemResponses;
 
-public class GetAllOrderItemReponseModel
+public record GetAllOrderItemReponseModel
 {
     public IEnumerable<SingleOrderItemReponseModel> Items { get; init; } = Enumerable.Empty<SingleOrderItemReponseModel>();
 }

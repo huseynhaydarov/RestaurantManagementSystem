@@ -14,7 +14,7 @@ public class ReservationConfiguration : IEntityTypeConfiguration<Reservation>
     public void Configure(EntityTypeBuilder<Reservation> builder)
     {
         builder.HasKey(rc => rc.Id);
-        builder.Property(rc => rc.Date).IsRequired();
+        builder.Property(rc => rc.ReservedDate).IsRequired();
         builder.Property(rc => rc.NumberOfGuests).IsRequired();
         builder.HasOne(rc => rc.Customer).WithMany(rc => rc.Reservations).HasForeignKey(rc => rc.CustomerId);
         builder.HasOne(rc => rc.Table).WithMany(rc => rc.Reservations).HasForeignKey(rc => rc.CustomerId);
