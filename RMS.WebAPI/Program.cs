@@ -47,6 +47,10 @@ builder.Services.AddScoped(typeof(IBaseRepository<Customer>), typeof(BaseReposit
 builder.Services.AddScoped(typeof(IBaseRepository<Order>), typeof(BaseRepository<Order>));
 builder.Services.AddScoped(typeof(IBaseRepository<MenuItem>), typeof(BaseRepository<MenuItem>));
 builder.Services.AddScoped(typeof(IBaseRepository<OrderItem>), typeof(BaseRepository<OrderItem>));
+builder.Services.AddScoped(typeof(IBaseRepository<Payment>), typeof(BaseRepository<Payment>));
+builder.Services.AddScoped(typeof(IBaseRepository<Reservation>), typeof(BaseRepository<Reservation>));
+builder.Services.AddScoped(typeof(IBaseRepository<ReservationTable>), typeof(BaseRepository<ReservationTable>));
+
 
 
 
@@ -54,6 +58,9 @@ builder.Services.AddScoped<IBaseService<Customer>, CustomerService>();
 builder.Services.AddScoped<IBaseService<Order>, OrderService>();
 builder.Services.AddScoped<IBaseService<MenuItem>, MenuItemService>();
 builder.Services.AddScoped<IBaseService<OrderItem>, OrderItemService>();
+builder.Services.AddScoped<IBaseService<Payment>, PaymentService>();
+builder.Services.AddScoped<IBaseService<Reservation>, ReservationService>();
+builder.Services.AddScoped<IBaseService<ReservationTable>, ReservationTableService>();
 builder.Services.AddEndpointsApiExplorer();
 
 //builder.Services.AddSwaggerGen();

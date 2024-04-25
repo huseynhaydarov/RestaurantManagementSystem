@@ -9,11 +9,11 @@ namespace RMS.Domain.Entities;
 
 public class Reservation : EntityBase
 {
-    public DateTime Date { get; set; }
+    public DateTime ReservedDate { get; set; }
     public int NumberOfGuests { get; set; }
     public Customer? Customer { get; set; }
     public int CustomerId { get; set; }
-    public Table? Table { get; set; }
+    public Customer? Table { get; set; }
     public int TableId { get; set; }    
 
 }

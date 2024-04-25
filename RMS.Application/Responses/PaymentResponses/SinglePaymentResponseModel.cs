@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Responses.PaymentResponses;
 
-public class SinglePaymentResponseModel
+public record SinglePaymentResponseModel
 {
     public int Id { get; set; }
     public DateTime PaymentDate { get; set; }

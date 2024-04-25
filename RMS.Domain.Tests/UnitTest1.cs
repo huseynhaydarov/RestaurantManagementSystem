@@ -1,16 +1,15 @@
-namespace RMS.Domain.Tests
-{
-    public class Tests
-    {
-        [SetUp]
-        public void Setup()
-        {
-        }
+namespace RMS.Domain.Tests;
 
-        [Test]
-        public void Test1()
-        {
-            Assert.Pass();
-        }
+public class Tests
+{
+    [SetUp]
+    public void Setup()
+    {
+    }
+
+    [Test]
+    public void Test1()
+    {
+        Assert.Pass();
     }
 }

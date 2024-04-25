@@ -12,8 +12,6 @@ public record UpdateReservationRequestModel
 {
     [JsonIgnore]
     public int Id { get; set; } 
-    public DateTime Date { get; set; }
+    public DateTime ReservedDate { get; set; }
     public int NumberOfGuests { get; set; }
-    public Customer? Customer { get; set; }
-    public int CustomerId { get; set; }
 }

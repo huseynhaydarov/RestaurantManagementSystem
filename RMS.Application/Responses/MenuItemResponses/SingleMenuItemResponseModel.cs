@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Responses.MenuItemResponses;
 
-public class SingleMenuItemResponseModel
+public record SingleMenuItemResponseModel
 {
     public int Id { get; set; }
     public string? Name { get; set; }

@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace RMS.Infrastructure.Persistence.DataBases.TablesConfiguration;
 
-public class TableConfiguration : IEntityTypeConfiguration<Table>
+public class TableConfiguration : IEntityTypeConfiguration<ReservationTable>
 {
-    public void Configure(EntityTypeBuilder<Table> builder)
+    public void Configure(EntityTypeBuilder<ReservationTable> builder)
     {
         builder.HasKey(t => t.Id);
         builder.Property(t => t.Number).IsRequired();

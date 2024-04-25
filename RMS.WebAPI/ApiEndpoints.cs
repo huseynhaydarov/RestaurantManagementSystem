@@ -60,7 +60,7 @@ public static class ApiEndpoints
         public const string Update = $"{Base}/{{id:int}}";
         public const string Delete = $"{Base}/{{id:int}}";
     }
-    public static class Table
+    public static class ReservationTable
     {
         public const string Base = $"{ApiBase}/tables";
         public const string Create = Base;

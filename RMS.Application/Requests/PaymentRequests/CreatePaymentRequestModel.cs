@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Requests.PaymentRequests;
 
-public class CreatePaymentRequestModel 
+public record CreatePaymentRequestModel 
 {
     public DateTime PaymentDate { get; set; }
     public decimal PaymentAmount { get; set; }
