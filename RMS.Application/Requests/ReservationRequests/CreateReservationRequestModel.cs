@@ -13,4 +13,6 @@ public record CreateReservationRequestModel
     public int NumberOfGuests { get; set; }
     public Customer? Customer { get; set; }
     public int CustomerId { get; set; }
+    public ReservationTable? ReservationTable { get; set; }
+    public int ReservationTableId { get; set; }
 }
