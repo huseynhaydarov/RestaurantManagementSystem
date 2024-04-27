@@ -12,5 +12,7 @@ public record SingleReservationResponseModel
     public int Id { get; set; }
     public DateTime Date { get; set; }
     public int NumberOfGuests { get; set; }
-  
+    public int CustomerId { get; set; }
+    public int ReservationTableId { get; set; }
+
 }

@@ -14,4 +14,6 @@ public record SinglePaymentResponseModel
     public decimal PaymentAmount { get; set; }
     public PaymentType Type { get; set; }
     public PaymentStatus Status { get; set; }
+    public int OrderId { get; set; }
 }
+

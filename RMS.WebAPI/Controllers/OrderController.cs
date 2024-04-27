@@ -62,6 +62,7 @@ public class OrderController(IBaseService<Order> orderService, IMapper mapper) :
         order.Location = request.Location;
         order.TotalPrice = request.TotalPrice;
         order.OrderTime = request.OrderTime;
+        order.CustomerId = request.CustomerId;
        
         await _orderService.UpdateAsync(order, token);
 

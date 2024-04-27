@@ -61,6 +61,8 @@ public class ReservationController(IBaseService<Reservation> reservationService,
 
         reservation.NumberOfGuests = request.NumberOfGuests;
         reservation.ReservedDate = request.ReservedDate;
+        reservation.ReservationTableId = request.ReservationTableId;
+        reservation.CustomerId = request.ReservationTableId;
 
         await _reservationService.UpdateAsync(reservation, token);
 
