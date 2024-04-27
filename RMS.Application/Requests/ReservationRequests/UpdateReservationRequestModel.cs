@@ -14,4 +14,6 @@ public record UpdateReservationRequestModel
     public int Id { get; set; } 
     public DateTime ReservedDate { get; set; }
     public int NumberOfGuests { get; set; }
+    public ReservationTable? ReservationTable { get; set; }
+    public int ReservationTableId { get; set; }
 }

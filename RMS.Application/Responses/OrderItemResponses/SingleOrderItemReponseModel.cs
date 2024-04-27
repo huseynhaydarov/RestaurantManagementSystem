@@ -12,4 +12,5 @@ public record SingleOrderItemReponseModel
     public int Id { get; set; }
     public double Count { get; set; }
     public OrderStatus Status { get; set; }
+    public int MenuItemId { get; set; }
 }
