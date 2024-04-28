@@ -23,8 +23,6 @@ public class Order : EntityBase
     public Customer? Customer { get; set; }
     
     public int CustomerId { get; set; }
-    
-    public ICollection<Customer>? Tables { get; set; }
 
     public Payment? Payment { get; set; }
 }
