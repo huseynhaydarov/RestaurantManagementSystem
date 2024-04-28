@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RMS.Infrastructure.Persistence.DataBases.TablesConfiguration;
 
-public class TableConfiguration : IEntityTypeConfiguration<ReservationTable>
+public class ReservationTableConfiguration : IEntityTypeConfiguration<ReservationTable>
 {
     public void Configure(EntityTypeBuilder<ReservationTable> builder)
     {
