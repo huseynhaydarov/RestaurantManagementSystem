@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RMS.Domain.Abstract;
-using RMS.Infrastructure.Persistence.DataBases.TablesConfiguration;
+using RMS.Infrastructure.Persistence.TablesConfiguration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +18,7 @@ public class EFContext : DbContext
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=RMS;Username=postgres;Password=7878_data_base");
+        optionsBuilder.UseNpgsql("Host=localhost;Port=5433;Database=RMS;Username=postgres;Password=7878_Postgresql");
         base.OnConfiguring(optionsBuilder);
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -26,12 +26,12 @@ public class EFContext : DbContext
         base.OnModelCreating(modelBuilder);
         modelBuilder.Ignore<EntityBase>();
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(CustomerConfiguration).Assembly);
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(TablesConfiguration.MenuItemConfiguration).Assembly);
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(TablesConfiguration.OrderItemConfiguration).Assembly);
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(TablesConfiguration.OrderItemConfiguration).Assembly);
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(TablesConfiguration.PaymentConfiguration).Assembly);
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(TablesConfiguration.ReservationConfiguration).Assembly);
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(TablesConfiguration.ReservationTableConfiguration).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(MenuItemConfiguration).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(OrderItemConfiguration).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(OrderItemConfiguration).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(PaymentConfiguration).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ReservationConfiguration).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ReservationTableConfiguration).Assembly);
 
         modelBuilder.Entity<IdentityUser>().ToTable("Users");
         modelBuilder.Entity<IdentityRole>().ToTable("Roles").HasNoKey();

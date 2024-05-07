@@ -7,13 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Infrastructure.Repository
+namespace RMS.Infrastructure.Persistence.Repositories;
+
+public class OrderItemRepository : BaseRepository<OrderItem>, IOrderItemRepository
 {
-    public class OrderRepository : BaseRepository<Order>, IOrderRepository
+    public OrderItemRepository(EFContext context) : base(context)
     {
-        public OrderRepository(EFContext context) : base(context)
-        {
-        }
     }
 }
-

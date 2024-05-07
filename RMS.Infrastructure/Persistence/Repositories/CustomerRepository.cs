@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Infrastructure.Repository;
+namespace RMS.Infrastructure.Persistence.Repositories;
 
 public class CustomerRepository : BaseRepository<Customer>, ICustomerRepository
 {

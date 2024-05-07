@@ -21,7 +21,7 @@ public class ReservationController(IBaseService<Reservation> reservationService,
     {
         var reservation = _mapper.Map<Reservation>(request);
 
-        var response = await reservationService.CreateAsync(reservation, token);
+        var response = await _reservationService.CreateAsync(reservation, token);
         return CreatedAtAction(nameof(Get), new { id = response.Id }, response);
     }
 
