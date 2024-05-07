@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using RMS.Domain.Entities;
 
 
-namespace RMS.Infrastructure.Persistence.DataBases.TablesConfiguration;
+namespace RMS.Infrastructure.Persistence.TablesConfiguration;
 
 public class OrderConfiguration : IEntityTypeConfiguration<Order>
 {

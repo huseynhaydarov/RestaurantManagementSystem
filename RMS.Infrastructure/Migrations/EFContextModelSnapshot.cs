@@ -345,23 +345,25 @@ namespace RMS.Infrastructure.Migrations
                     b.Property<int>("CustomerId")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<int>("NumberOfGuests")
                         .HasColumnType("integer");
 
-                    b.Property<int>("TableId")
+                    b.Property<int>("ReservationTableId")
                         .HasColumnType("integer");
+
+                    b.Property<DateTime>("ReservedDate")
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
 
+                    b.HasIndex("ReservationTableId");
+
                     b.ToTable("Reservation");
                 });
 
-            modelBuilder.Entity("RMS.Domain.Entities.Table", b =>
+            modelBuilder.Entity("RMS.Domain.Entities.ReservationTable", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -375,18 +377,13 @@ namespace RMS.Infrastructure.Migrations
                     b.Property<int>("Number")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("OrderId")
-                        .HasColumnType("integer");
-
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrderId");
-
-                    b.ToTable("Table");
+                    b.ToTable("ReservationTable");
                 });
 
             modelBuilder.Entity("RMS.Domain.Entities.Order", b =>
@@ -434,22 +431,15 @@ namespace RMS.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RMS.Domain.Entities.Table", "Table")
+                    b.HasOne("RMS.Domain.Entities.ReservationTable", "ReservationTable")
                         .WithMany("Reservations")
-                        .HasForeignKey("CustomerId")
+                        .HasForeignKey("ReservationTableId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Customer");
 
-                    b.Navigation("Table");
-                });
-
-            modelBuilder.Entity("RMS.Domain.Entities.Table", b =>
-                {
-                    b.HasOne("RMS.Domain.Entities.Order", null)
-                        .WithMany("Tables")
-                        .HasForeignKey("OrderId");
+                    b.Navigation("ReservationTable");
                 });
 
             modelBuilder.Entity("RMS.Domain.Entities.Customer", b =>
@@ -469,11 +459,9 @@ namespace RMS.Infrastructure.Migrations
                     b.Navigation("Items");
 
                     b.Navigation("Payment");
-
-                    b.Navigation("Tables");
                 });
 
-            modelBuilder.Entity("RMS.Domain.Entities.Table", b =>
+            modelBuilder.Entity("RMS.Domain.Entities.ReservationTable", b =>
                 {
                     b.Navigation("Reservations");
                 });

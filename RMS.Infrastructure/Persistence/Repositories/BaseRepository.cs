@@ -3,7 +3,7 @@ using RMS.Application.Common.Interfaces.Repositories;
 using RMS.Domain.Abstract;
 using RMS.Infrastructure.Persistence.DataBases;
 
-namespace RMS.Infrastructure.Repository;
+namespace RMS.Infrastructure.Persistence.Repositories;
 
 public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : EntityBase
 {

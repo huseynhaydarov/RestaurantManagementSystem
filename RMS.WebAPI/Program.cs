@@ -7,7 +7,7 @@ using RMS.Application.Mappers;
 using RMS.Application.Services;
 using RMS.Domain.Entities;
 using RMS.Infrastructure.Persistence.DataBases;
-using RMS.Infrastructure.Repository;
+using RMS.Infrastructure.Persistence.Repositories;
 using Swashbuckle.AspNetCore.Filters;
 
 var builder = WebApplication.CreateBuilder(args);

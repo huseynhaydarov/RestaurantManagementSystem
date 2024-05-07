@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Infrastructure.Persistence.DataBases.TablesConfiguration;
+namespace RMS.Infrastructure.Persistence.TablesConfiguration;
 
 public class ReservationConfiguration : IEntityTypeConfiguration<Reservation>
 {

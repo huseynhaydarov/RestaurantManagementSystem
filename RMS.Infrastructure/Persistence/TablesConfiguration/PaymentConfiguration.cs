@@ -8,7 +8,7 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Infrastructure.Persistence.DataBases.TablesConfiguration;
+namespace RMS.Infrastructure.Persistence.TablesConfiguration;
 
 public class PaymentConfiguration : IEntityTypeConfiguration<Payment>
 {
