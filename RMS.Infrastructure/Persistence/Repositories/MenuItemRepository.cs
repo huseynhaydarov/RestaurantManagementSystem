@@ -1,17 +1,18 @@
 ﻿using RMS.Application.Common.Interfaces.Repositories;
 using RMS.Domain.Entities;
 using RMS.Infrastructure.Persistence.DataBases;
-using RMS.Infrastructure.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMS.Infrastructure.Repositories;
-public class PaymentRepository : BaseRepository<Payment>, IPaymentRepository
+namespace RMS.Infrastructure.Persistence.Repositories;
+
+public class MenuItemRepository : BaseRepository<MenuItem>, IMenuItemRepository
 {
-    public PaymentRepository(EFContext context) : base(context)
+    public MenuItemRepository(EFContext context) : base(context)
     {
+
     }
 }
