@@ -1,15 +1,9 @@
 ﻿using RMS.Application.Common.Interfaces.Repositories;
-using RMS.Application.Common.Interfaces;
 using RMS.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RMS.Application.Services
 {
-    public class OrderItemService(IBaseRepository<OrderItem> orderItemRepository) : IBaseService<OrderItem>
+    public class OrderItemService(IBaseRepository<OrderItem> orderItemRepository)
     {
         private readonly IBaseRepository<OrderItem> _orderItemRepository = orderItemRepository;
 

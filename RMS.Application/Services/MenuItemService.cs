@@ -1,15 +1,9 @@
-﻿using RMS.Application.Common.Interfaces;
-using RMS.Application.Common.Interfaces.Repositories;
+﻿using RMS.Application.Common.Interfaces.Repositories;
 using RMS.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RMS.Application.Services
 {
-    public class MenuItemService(IBaseRepository<MenuItem> menuItemRepository) : IBaseService<MenuItem>
+    public class MenuItemService(IBaseRepository<MenuItem> menuItemRepository)
     {
         private readonly IBaseRepository<MenuItem> _menuItemRepository = menuItemRepository;
 

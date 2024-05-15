@@ -1,15 +1,9 @@
-﻿using RMS.Application.Common.Interfaces;
-using RMS.Application.Common.Interfaces.Repositories;
+﻿using RMS.Application.Common.Interfaces.Repositories;
 using RMS.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RMS.Application.Services;
 
-public class PaymentService(IBaseRepository<Payment> paymentRepository) : IBaseService<Payment>
+public class PaymentService(IBaseRepository<Payment> paymentRepository)
 {
     private readonly IBaseRepository<Payment> _paymentRepository = paymentRepository;
     public async Task<Payment> CreateAsync(Payment payment, CancellationToken token = default)

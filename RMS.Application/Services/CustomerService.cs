@@ -1,48 +1,63 @@
 ﻿using RMS.Application.Common.Interfaces.Repositories;
 using RMS.Application.Common.Interfaces;
 using AutoMapper;
+using RMS.Application.Exceptions;
+using RMS.Application.Requests.CustomerRequests;
+using RMS.Application.Responses.CustomerResponses;
 using RMS.Domain.Entities;
 
 namespace RMS.Application.Services;
 
-public class CustomerService(IBaseRepository<Customer> customerRepository) : IBaseService<Customer>
+public class CustomerService(ICustomerRepository customerRepository, IMapper mapper) : ICustomerService
 {
-    private readonly IBaseRepository<Customer> _customerRepository = customerRepository;
-
-    public async Task<Customer> CreateAsync(Customer customer, CancellationToken token = default)
+    public async Task<CustomerResponse> CreateAsync(CreateCustomerRequestModel request,
+        CancellationToken token = default)
     {
-        return await _customerRepository.CreateAsync(customer, token);
-
+        var customer = mapper.Map<Customer>(request);
+        var response = await customerRepository.CreateAsync(customer, token);
+        return mapper.Map<CustomerResponse>(response);
     }
 
     public async Task<bool> DeleteAsync(int id, CancellationToken token = default)
     {
-        var customer = await _customerRepository.GetAsync(id);
-        if (customer == null)
+        var customer = await customerRepository.GetAsync(id, token);
+        if (customer is null)
         {
-            return false;
+            throw new NotFoundException(nameof(Customer), id);
         }
-        return await _customerRepository.DeleteAsync(customer, token);
+
+        return await customerRepository.DeleteAsync(customer, token);
     }
 
-    public async Task<IEnumerable<Customer>> GetAllAsync(CancellationToken token = default)
+    public async Task<List<CustomerResponse>> GetAllAsync(CancellationToken token = default)
     {
-        return await _customerRepository.GetAllAsync(token);
+        
+        var response = await customerRepository.GetAllAsync(token);
+        return mapper.Map<List<CustomerResponse>>(response);
     }
 
-    public async Task<Customer> GetAsync(int id, CancellationToken token = default)
+    public async Task<CustomerResponse?> GetAsync(int id, CancellationToken token = default)
     {
-        return await _customerRepository.GetAsync(id, token);
-    }
+        var response = await customerRepository.GetAsync(id, token);
 
-    public async Task<bool> UpdateAsync(Customer customer, CancellationToken token = default)
-    {
-        var isCustomerExist = await _customerRepository.GetAsync(customer.Id, token);
-
-        if (isCustomerExist == null)
+        if (response is null)
         {
-            return false;
+            throw new NotFoundException(nameof(Customer), id);
         }
-        return await _customerRepository.UpdateAsync(customer, token);
+
+        return mapper.Map<CustomerResponse>(response);
+    }
+
+    public async Task<bool> UpdateAsync(UpdateCustomerRequestModel request, CancellationToken token = default)
+    {
+        var customer = await customerRepository.GetAsync(request.Id, token);
+
+        if (customer is null)
+        {
+            throw new NotFoundException(nameof(Customer), request.Id);
+        }
+
+        customer = mapper.Map<Customer>(request);
+        return await customerRepository.UpdateAsync(customer, token);
     }
 }

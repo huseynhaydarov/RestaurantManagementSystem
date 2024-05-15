@@ -23,8 +23,7 @@ public class AutoMapperConfiguration : Profile
     public AutoMapperConfiguration() 
     {
         CreateMap<CreateCustomerRequestModel, Customer>();
-        CreateMap<Customer, SingleCustomerResponseModel> ();
-        CreateMap<GetAllCustomerRequestModel, GetAllCustomerResponseModel>();
+        CreateMap<Customer, CustomerResponse> ();
         CreateMap<UpdateCustomerRequestModel, Customer>();
 
         CreateMap<CreateMenuItemRequestModel, MenuItem>();
