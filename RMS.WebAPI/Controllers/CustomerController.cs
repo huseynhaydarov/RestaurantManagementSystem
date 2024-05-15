@@ -11,24 +11,21 @@ namespace RMS.WebAPI.Controllers;
 [Route("[controller]")]
 public class CustomerController(IBaseService<Customer> customerService, IMapper mapper) : ControllerBase
 {
-    private readonly IBaseService<Customer> _customerService = customerService;
-    private readonly IMapper _mapper = mapper;
-
     [HttpPost(ApiEndpoints.Customer.Create)]
     public async Task<IActionResult> Create([FromBody] CreateCustomerRequestModel request, CancellationToken token)
     {
-        var customer = _mapper.Map<Customer>(request);
+        var customer = mapper.Map<Customer>(request);
 
-        var response = await _customerService.CreateAsync(customer, token);
+        var response = await customerService.CreateAsync(customer, token);
         return CreatedAtAction(nameof(Get), new { id = response.Id }, response);
     }
 
     [HttpGet(ApiEndpoints.Customer.Get)]
     public async Task<IActionResult> Get([FromRoute] int id, CancellationToken token)
     {
-        var isCustomerExist = await _customerService.GetAsync(id, token);
+        var isCustomerExist = await customerService.GetAsync(id, token);
 
-        var response = _mapper.Map<SingleCustomerResponseModel>(isCustomerExist);
+        var response = mapper.Map<SingleCustomerResponseModel>(isCustomerExist);
 
         return response == null ? NotFound() : Ok(response);
     }
@@ -36,11 +33,11 @@ public class CustomerController(IBaseService<Customer> customerService, IMapper 
     [HttpGet(ApiEndpoints.Customer.GetAll)]
     public async Task<IActionResult> GetAll(CancellationToken token)
     {
-        var customers = await _customerService.GetAllAsync(token);
+        var customers = await customerService.GetAllAsync(token);
 
         var response = new GetAllCustomerResponseModel()
         {
-            Items = _mapper.Map<IEnumerable<SingleCustomerResponseModel>>(customers)
+            Items = mapper.Map<IEnumerable<SingleCustomerResponseModel>>(customers)
         };
 
         return Ok(response);
@@ -55,14 +52,14 @@ public class CustomerController(IBaseService<Customer> customerService, IMapper 
             return BadRequest("Invalid request data.");
         }
 
-        Customer customer = await _customerService.GetAsync(id, token);
+        Customer customer = await customerService.GetAsync(id, token);
 
         customer.Email = request.Email;
         customer.Address = request.Address;
         customer.PhoneNumber = request.PhoneNumber;
         customer.FullName = request.FullName;
         
-        await _customerService.UpdateAsync(customer, token);
+        await customerService.UpdateAsync(customer, token);
 
         var response = mapper.Map<SingleCustomerResponseModel>(customer);
 
@@ -72,7 +69,7 @@ public class CustomerController(IBaseService<Customer> customerService, IMapper 
     [HttpDelete(ApiEndpoints.Customer.Delete)]
     public async Task<IActionResult> Delete([FromRoute] int id, CancellationToken token)
     {
-        var response = await _customerService.DeleteAsync(id, token);
+        var response = await customerService.DeleteAsync(id, token);
 
         return response ? Ok() : NotFound($"Customer with ID {id} not found.");
     }

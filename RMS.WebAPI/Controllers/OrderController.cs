@@ -16,34 +16,31 @@ namespace RMS.WebAPI.Controllers;
 
 public class OrderController(IBaseService<Order> orderService, IMapper mapper) : ControllerBase
 {
-    private readonly IBaseService<Order> _orderService = orderService;
-    private readonly IMapper _mapper = mapper;
-
     [HttpPost(ApiEndpoints.Order.Create)]
     public async Task<IActionResult> Create([FromBody] CreateOrderRequestModel request, CancellationToken token)
     {
-        var order = _mapper.Map<Order>(request);
+        var order = mapper.Map<Order>(request);
 
-        var response = await _orderService.CreateAsync(order, token);
+        var response = await orderService.CreateAsync(order, token);
         return CreatedAtAction(nameof(Get), new { id = response.Id }, response);
     }
 
     [HttpGet(ApiEndpoints.Order.Get)]
     public async Task<IActionResult> Get([FromRoute] int id, CancellationToken token)
     {
-        var isOrderExist = await _orderService.GetAsync(id, token);
+        var isOrderExist = await orderService.GetAsync(id, token);
 
-        var response = _mapper.Map<SingleOrderResponseModel>(isOrderExist);
+        var response = mapper.Map<SingleOrderResponseModel>(isOrderExist);
         return response == null ? NotFound() : Ok(response);
     }
 
     [HttpGet(ApiEndpoints.Order.GetAll)]
     public async Task<IActionResult> GetAll(CancellationToken token)
     {
-        var orders = await _orderService.GetAllAsync(token);
+        var orders = await orderService.GetAllAsync(token);
         var response = new GetAllOrderResponseModel()
         {
-            Items = _mapper.Map<IEnumerable<SingleOrderResponseModel>>(orders)
+            Items = mapper.Map<IEnumerable<SingleOrderResponseModel>>(orders)
         };
         return Ok(response);
     }
@@ -57,14 +54,14 @@ public class OrderController(IBaseService<Order> orderService, IMapper mapper) :
             return BadRequest("Invalid request data.");
         }
 
-        Order order = await _orderService.GetAsync(id, token);
+        Order order = await orderService.GetAsync(id, token);
 
         order.Location = request.Location;
         order.TotalPrice = request.TotalPrice;
         order.OrderTime = request.OrderTime;
         order.CustomerId = request.CustomerId;
        
-        await _orderService.UpdateAsync(order, token);
+        await orderService.UpdateAsync(order, token);
 
         var response = mapper.Map<SingleOrderResponseModel>(order);
 
@@ -74,7 +71,7 @@ public class OrderController(IBaseService<Order> orderService, IMapper mapper) :
     [HttpDelete(ApiEndpoints.Order.Delete)]
     public async Task<IActionResult> Delete([FromRoute] int id, CancellationToken token)
     {
-        var response = await _orderService.DeleteAsync(id, token);
+        var response = await orderService.DeleteAsync(id, token);
         return response ? Ok() : NotFound($"Order with ID {id} not found"); ;
     }
 }

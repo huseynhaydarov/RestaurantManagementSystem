@@ -14,24 +14,22 @@ namespace RMS.WebAPI.Controllers
     [Route("[controller]")]
     public class MenuItemController(IBaseService<MenuItem> menuItemService, IMapper mapper) : ControllerBase
     {
-        private readonly IBaseService<MenuItem> _menuItemService = menuItemService;
-        private readonly IMapper _mapper = mapper;
 
         [HttpPost(ApiEndpoints.MenuItem.Create)]
         public async Task<IActionResult> Create([FromBody] CreateMenuItemRequestModel request, CancellationToken token)
         {
-            var menuItem = _mapper.Map<MenuItem>(request);
+            var menuItem = mapper.Map<MenuItem>(request);
 
-            var response = await _menuItemService.CreateAsync(menuItem, token);
+            var response = await menuItemService.CreateAsync(menuItem, token);
             return CreatedAtAction(nameof(Get), new { id = response.Id }, response);
         }
 
         [HttpGet(ApiEndpoints.MenuItem.Get)]
         public async Task<IActionResult> Get([FromRoute] int id, CancellationToken token)
         {
-            var isMenuItemExist = await _menuItemService.GetAsync(id, token);
+            var isMenuItemExist = await menuItemService.GetAsync(id, token);
 
-            var response = _mapper.Map<SingleMenuItemResponseModel>(isMenuItemExist);
+            var response = mapper.Map<SingleMenuItemResponseModel>(isMenuItemExist);
 
             return response == null ? NotFound() : Ok(response);
         }
@@ -39,11 +37,11 @@ namespace RMS.WebAPI.Controllers
         [HttpGet(ApiEndpoints.MenuItem.GetAll)]
         public async Task<IActionResult> GetAll(CancellationToken token)
         {
-            var menuItems = await _menuItemService.GetAllAsync(token);
+            var menuItems = await menuItemService.GetAllAsync(token);
 
             var response = new GetAllMenuItemResponseModel()
             {
-                Items = _mapper.Map<IEnumerable<SingleMenuItemResponseModel>>(menuItems)
+                Items = mapper.Map<IEnumerable<SingleMenuItemResponseModel>>(menuItems)
             };
 
             return Ok(response);
@@ -58,14 +56,14 @@ namespace RMS.WebAPI.Controllers
                 return BadRequest("Invalid request data.");
             }
 
-            MenuItem menuItem = await _menuItemService.GetAsync(id, token);
+            MenuItem menuItem = await menuItemService.GetAsync(id, token);
 
             menuItem.Category = request.Category;
             menuItem.Description = request.Description;
             menuItem.Name = request.Name;
             menuItem.Price = request.Price;
 
-            await _menuItemService.UpdateAsync(menuItem, token);
+            await menuItemService.UpdateAsync(menuItem, token);
 
             var response = mapper.Map<SingleMenuItemResponseModel>(menuItem);
 
@@ -75,7 +73,7 @@ namespace RMS.WebAPI.Controllers
         [HttpDelete(ApiEndpoints.MenuItem.Delete)]
         public async Task<IActionResult> Delete([FromRoute] int id, CancellationToken token)
         {
-            var response = await _menuItemService.DeleteAsync(id, token);
+            var response = await menuItemService.DeleteAsync(id, token);
 
             return response ? Ok() : NotFound($"MenuItem with ID {id} not found.");
         }
