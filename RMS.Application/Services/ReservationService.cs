@@ -1,51 +1,64 @@
-﻿using RMS.Application.Common.Interfaces.Repositories;
-using RMS.Application.Common.Interfaces;
+﻿using AutoMapper;
+using RMS.Application.Common.Interfaces.Repositories;
+using RMS.Application.Common.Interfaces.Services;
+using RMS.Application.Exceptions;
+using RMS.Application.Requests.OrderRequests;
+using RMS.Application.Requests.ReservationRequests;
+using RMS.Application.Responses.OrderResponses;
+using RMS.Application.Responses.ReservationResponses;
 using RMS.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RMS.Application.Services;
 
-public class ReservationService(IBaseRepository<Reservation> reservationRepository) : IBaseService<Reservation>
+public class ReservationService(IReservationRepository reservationRepository, IMapper mapper) : IReservationService
 {
-    private readonly IBaseRepository<Reservation> _reservationRepository = reservationRepository;
-
-    public async Task<Reservation> CreateAsync(Reservation reservation, CancellationToken token = default)
+    public async Task<ReservationResponse> CreateAsync(CreateReservationRequestModel request,
+        CancellationToken token = default)
     {
-        return await _reservationRepository.CreateAsync(reservation, token);
+        var reservation = mapper.Map<Reservation>(request);
+        var response = await reservationRepository.CreateAsync(reservation, token);
+        return mapper.Map<ReservationResponse>(response);
     }
 
     public async Task<bool> DeleteAsync(int id, CancellationToken token = default)
     {
-        var reservation = await _reservationRepository.GetAsync(id);
-        if (reservation == null)
+        var reservation = await reservationRepository.GetAsync(id, token);
+
+        if (reservation is null)
         {
-            return false;
+            throw new NotFoundException(nameof(reservation), id);
         }
-        return await _reservationRepository.DeleteAsync(reservation, token);
+        return await reservationRepository.DeleteAsync(reservation, token);
     }
 
-    public async Task<IEnumerable<Reservation>> GetAllAsync(CancellationToken token = default)
+    public async Task<List<ReservationResponse>> GetAllAsync(CancellationToken token = default)
     {
-        return await _reservationRepository.GetAllAsync(token);
+        var response = await reservationRepository.GetAllAsync(token);
+        return mapper.Map<List<ReservationResponse>>(response);
     }
 
-    public async Task<Reservation> GetAsync(int id, CancellationToken token = default)
+    public async Task<ReservationResponse?> GetAsync(int id, CancellationToken token = default)
     {
-        return await _reservationRepository.GetAsync(id, token);
-    }
+        var response = await reservationRepository.GetAsync(id, token);
 
-    public async Task<bool> UpdateAsync(Reservation reservation, CancellationToken token = default)
-    {
-        var isReservationExists = await _reservationRepository.GetAsync(reservation.Id, token);
-
-        if (isReservationExists == null)
+        if (response is null)
         {
-            return false;
+            throw new NotFoundException(nameof(Reservation), id);
         }
-        return await _reservationRepository.UpdateAsync(reservation, token);
+
+        return mapper.Map<ReservationResponse>(response);
+    }
+
+    public async Task<bool> UpdateAsync(UpdateReservationRequestModel request, CancellationToken token = default)
+    {
+        var reservation = await reservationRepository.GetAsync(request.Id, token);
+
+        if (reservation is null)
+        {
+            throw new NotFoundException(nameof(Reservation), request.Id);
+        }
+
+        reservation = mapper.Map<Reservation>(request);
+        return await reservationRepository.UpdateAsync(reservation, token);
     }
 }

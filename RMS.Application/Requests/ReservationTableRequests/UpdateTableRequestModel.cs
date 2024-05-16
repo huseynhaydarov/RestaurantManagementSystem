@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Requests.TableRequests;
 
-public record UpdateReservationTableRequestModel
+public record UpdateTableRequestModel
 {
     [JsonIgnore]
     public int Id { get; set; } 

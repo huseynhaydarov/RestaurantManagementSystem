@@ -16,4 +16,5 @@ public class Customer : EntityBase
     public ICollection<Order>? Orders { get; set; }
     public ICollection<Reservation>? Reservations { get; set; }
 
+
 }

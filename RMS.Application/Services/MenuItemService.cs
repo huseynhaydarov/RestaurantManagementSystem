@@ -1,53 +1,61 @@
-﻿using RMS.Application.Common.Interfaces;
+﻿using AutoMapper;
 using RMS.Application.Common.Interfaces.Repositories;
+using RMS.Application.Common.Interfaces.Services;
+using RMS.Application.Exceptions;
+using RMS.Application.Requests.MenuItemRequestModel;
+using RMS.Application.Responses.MenuItemResponses;
 using RMS.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace RMS.Application.Services
+public class MenuItemService(IMenuItemRepository menuItemRepository, IMapper mapper) : IMenuItemService
 {
-    public class MenuItemService(IBaseRepository<MenuItem> menuItemRepository) : IBaseService<MenuItem>
+    public async Task<MenuItemResponse> CreateAsync(CreateMenuItemRequestModel request,
+        CancellationToken token = default)
     {
-        private readonly IBaseRepository<MenuItem> _menuItemRepository = menuItemRepository;
+        var menuItem = mapper.Map<MenuItem>(request);
+        var response = await menuItemRepository.CreateAsync(menuItem, token);
+        return mapper.Map<MenuItemResponse>(response);
+    }
 
-        public async Task<MenuItem> CreateAsync(MenuItem menuItem, CancellationToken token = default)
+    public async Task<bool> DeleteAsync(int id, CancellationToken token = default)
+    {
+        var menuItem = await menuItemRepository.GetAsync(id, token);
+        if (menuItem is null)
         {
-            return await _menuItemRepository.CreateAsync(menuItem, token);
-
+            throw new NotFoundException(nameof(Customer), id);
         }
 
-        public async Task<bool> DeleteAsync(int id, CancellationToken token = default)
+        return await menuItemRepository.DeleteAsync(menuItem, token);
+    }
+
+    public async Task<List<MenuItemResponse>> GetAllAsync(CancellationToken token = default)
+    {
+
+        var response = await menuItemRepository.GetAllAsync(token);
+        return mapper.Map<List<MenuItemResponse>>(response);
+    }
+
+    public async Task<MenuItemResponse?> GetAsync(int id, CancellationToken token = default)
+    {
+        var response = await menuItemRepository.GetAsync(id, token);
+
+        if (response is null)
         {
-            var menuItem = await _menuItemRepository.GetAsync(id);
-            if (menuItem == null)
-            {
-                return false;
-            }
-            return await _menuItemRepository.DeleteAsync(menuItem, token);
+            throw new NotFoundException(nameof(MenuItem), id);
         }
 
-        public async Task<IEnumerable<MenuItem>> GetAllAsync(CancellationToken token = default)
+        return mapper.Map<MenuItemResponse>(response);
+    }
+
+    public async Task<bool> UpdateAsync(UpdateMenuItemRequestModel request, CancellationToken token = default)
+    {
+        var menuItem = await menuItemRepository.GetAsync(request.Id, token);
+
+        if (menuItem is null)
         {
-            return await _menuItemRepository.GetAllAsync(token);
+            throw new NotFoundException(nameof(MenuItem), request.Id);
         }
 
-        public async Task<MenuItem> GetAsync(int id, CancellationToken token = default)
-        {
-            return await _menuItemRepository.GetAsync(id, token);
-        }
-
-        public async Task<bool> UpdateAsync(MenuItem menuItem, CancellationToken token = default)
-        {
-            var IsMenuItemExist = await _menuItemRepository.GetAsync(menuItem.Id, token);
-
-            if (IsMenuItemExist == null)
-            {
-                return false;
-            }
-            return await _menuItemRepository.UpdateAsync(menuItem, token);
-        }
+        menuItem = mapper.Map<MenuItem>(request);
+        return await menuItemRepository.UpdateAsync(menuItem, token);
     }
 }

@@ -11,8 +11,6 @@ public record CreateReservationRequestModel
 {
     public DateTime Date { get; set; }
     public int NumberOfGuests { get; set; }
-    public Customer? Customer { get; set; }
     public int CustomerId { get; set; }
-    public ReservationTable? ReservationTable { get; set; }
-    public int ReservationTableId { get; set; }
+    public int TableId { get; set; }
 }

@@ -8,15 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Exceptions\**" />
     <Compile Remove="Exeprions\**" />
     <Compile Remove="Validations\**" />
-    <EmbeddedResource Remove="Exceptions\**" />
     <EmbeddedResource Remove="Exeprions\**" />
     <EmbeddedResource Remove="Validations\**" />
-    <None Remove="Exceptions\**" />
     <None Remove="Exeprions\**" />
     <None Remove="Validations\**" />
+    <Compile Remove="Responses\CustomerResponses\GetAllCustomerResponseModel.cs" />
+    <Compile Remove="Common\Interfaces\IBaseService.cs" />
   </ItemGroup>
 
   <ItemGroup>

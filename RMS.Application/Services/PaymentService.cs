@@ -1,52 +1,63 @@
-﻿using RMS.Application.Common.Interfaces;
+﻿using AutoMapper;
 using RMS.Application.Common.Interfaces.Repositories;
+using RMS.Application.Common.Interfaces.Services;
+using RMS.Application.Exceptions;
+using RMS.Application.Requests.PaymentRequests;
+using RMS.Application.Responses.PaymentResponses;
 using RMS.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RMS.Application.Services;
 
-public class PaymentService(IBaseRepository<Payment> paymentRepository) : IBaseService<Payment>
+public class PaymentService(IPaymentRepository paymentRepository, IMapper mapper) : IPaymentService
 {
-    private readonly IBaseRepository<Payment> _paymentRepository = paymentRepository;
-    public async Task<Payment> CreateAsync(Payment payment, CancellationToken token = default)
+    public async Task<PaymentResponse> CreateAsync(CreatePaymentRequestModel request,
+        CancellationToken token = default)
     {
-        return await _paymentRepository.CreateAsync(payment, token);
+        var paymnet = mapper.Map<Payment>(request);
+        var response = await paymentRepository.CreateAsync(paymnet, token);
+        return mapper.Map<PaymentResponse>(response);
     }
 
     public async Task<bool> DeleteAsync(int id, CancellationToken token = default)
     {
-        var payment = await _paymentRepository.GetAsync(id);
-        if (payment == null)
+        var payment = await paymentRepository.GetAsync(id, token);
+
+        if (payment is null)
         {
-            return false;
+            throw new NotFoundException(nameof(payment), id);
         }
-        return await _paymentRepository.DeleteAsync(payment, token);
+        return await paymentRepository.DeleteAsync(payment, token);
     }
 
-    public async Task<IEnumerable<Payment>> GetAllAsync(CancellationToken token = default)
+    public async Task<List<PaymentResponse>> GetAllAsync(CancellationToken token = default)
     {
-        return await _paymentRepository.GetAllAsync(token);
+        var response = await paymentRepository.GetAllAsync(token);
+        return mapper.Map<List<PaymentResponse>>(response);
     }
 
-    public  async Task<Payment> GetAsync(int id, CancellationToken token = default)
+    public async Task<PaymentResponse?> GetAsync(int id, CancellationToken token = default)
     {
-        return await _paymentRepository.GetAsync(id, token);
-    }
+        var response = await paymentRepository.GetAsync(id, token);
 
-    public async Task<bool> UpdateAsync(Payment payment, CancellationToken token = default)
-    {
-        var isPaymentExist = await _paymentRepository.GetAsync(payment.Id, token);
-
-        if (isPaymentExist == null)
+        if (response is null)
         {
-            return false;
+            throw new NotFoundException(nameof(Payment), id);
         }
-        return await _paymentRepository.UpdateAsync(payment, token);
+
+        return mapper.Map<PaymentResponse>(response);
+    }
+
+    public async Task<bool> UpdateAsync(UpdatePaymentRequestModel request, CancellationToken token = default)
+    {
+        var payment = await paymentRepository.GetAsync(request.Id, token);
+
+        if (payment is null)
+        {
+            throw new NotFoundException(nameof(Payment), request.Id);
+        }
+
+        payment = mapper.Map<Payment>(request);
+        return await paymentRepository.UpdateAsync(payment, token);
     }
 }
-
 

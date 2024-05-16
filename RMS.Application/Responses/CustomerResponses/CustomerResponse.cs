@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Responses.CustomerResponses;
 
-public record SingleCustomerResponseModel
+public record CustomerResponse
 {
     public int Id { get; set; }
     public string? FullName { get; set; }
