@@ -32,8 +32,7 @@ public class AutoMapperConfiguration : Profile
         CreateMap<UpdateMenuItemRequestModel, MenuItem>();
 
         CreateMap<CreateOrderRequestModel, Order>();
-        CreateMap<Order, SingleOrderResponseModel>();
-        CreateMap<GetAllOrderRequestModel, GetAllOrderResponseModel>();
+        CreateMap<Order, OrderResponse>();
         CreateMap<UpdateOrderRequestModel, Order>();
 
         CreateMap<CreateOrderItemRequestModel, OrderItem>();

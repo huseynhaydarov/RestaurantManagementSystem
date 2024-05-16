@@ -1,45 +1,63 @@
-﻿using RMS.Application.Common.Interfaces.Repositories;
+﻿using AutoMapper;
+using RMS.Application.Common.Interfaces.Repositories;
+using RMS.Application.Common.Interfaces.Services;
+using RMS.Application.Exceptions;
+using RMS.Application.Requests.OrderRequests;
+using RMS.Application.Responses.CustomerResponses;
+using RMS.Application.Responses.OrderResponses;
 using RMS.Domain.Entities;
 
 namespace RMS.Application.Services;
 
-public class OrderService(IBaseRepository<Order> orderRepository)
+public class OrderService(IOrderRepository orderRepository, IMapper mapper) : IOrderService
 {
-    public async Task<Order> CreateAsync(Order order, CancellationToken token = default)
+    public async Task<OrderResponse> CreateAsync(CreateOrderRequestModel request, 
+        CancellationToken token = default)
     {
-        return await orderRepository.CreateAsync(order, token);
+        var order = mapper.Map<Order>(request);
+        var response = await orderRepository.CreateAsync(order, token);
+        return mapper.Map<OrderResponse>(response);
     }
 
     public async Task<bool> DeleteAsync(int id, CancellationToken token = default)
     {
         var order = await orderRepository.GetAsync(id, token);
 
-        if(order == null)
+        if(order is null)
         {
-            return false;
+            throw new NotFoundException(nameof(order), id);
         }
         return await orderRepository.DeleteAsync(order, token);
     }
 
-    public async Task<IEnumerable<Order>> GetAllAsync(CancellationToken token = default)
+    public async Task<List<OrderResponse>> GetAllAsync(CancellationToken token = default)
     {
-        return await orderRepository.GetAllAsync(token);
+        var response = await orderRepository.GetAllAsync(token);
+        return mapper.Map<List<OrderResponse>>(response);
     }
 
-    public async Task<Order> GetAsync(int id, CancellationToken token = default)
+    public async Task<OrderResponse?> GetAsync(int id, CancellationToken token = default)
     {
-        return await orderRepository.GetAsync(id, token);   
-    }
+        var response = await orderRepository.GetAsync(id, token);
 
-    public async Task<bool> UpdateAsync(Order order, CancellationToken token = default)
-    {
-        var orderExist = await orderRepository.GetAsync(order.Id, token);
-
-        if (orderExist == null)
+        if(response is null)
         {
-            return false;
+            throw new NotFoundException(nameof(Order), id);
         }
 
+        return mapper.Map<OrderResponse>(response);
+    }
+
+    public async Task<bool> UpdateAsync(UpdateOrderRequestModel request, CancellationToken token = default)
+    {
+        var order = await orderRepository.GetAsync(request.Id, token);
+
+        if (order is null)
+        {
+            throw new NotFoundException(nameof(Order), request.Id);
+        }
+
+        order = mapper.Map<Order>(request);
         return await orderRepository.UpdateAsync(order, token);
     }
 }

@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using RMS.Application.Common.Interfaces;
 using RMS.Application.Common.Interfaces.Repositories;
+using RMS.Application.Common.Interfaces.Services;
 using RMS.Application.Mappers;
 using RMS.Application.Services;
 using RMS.Domain.Entities;
@@ -49,6 +49,9 @@ builder.Services.AddScoped(typeof(IBaseRepository<MenuItem>), typeof(BaseReposit
 builder.Services.AddScoped(typeof(IBaseRepository<OrderItem>), typeof(BaseRepository<OrderItem>));
 builder.Services.AddScoped(typeof(IBaseRepository<Payment>), typeof(BaseRepository<Payment>));
 builder.Services.AddScoped(typeof(IBaseRepository<Reservation>), typeof(BaseRepository<Reservation>));
+
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 

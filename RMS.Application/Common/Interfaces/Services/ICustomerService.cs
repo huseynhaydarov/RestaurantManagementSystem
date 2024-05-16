@@ -1,7 +1,7 @@
 ﻿using RMS.Application.Requests.CustomerRequests;
 using RMS.Application.Responses.CustomerResponses;
 
-namespace RMS.Application.Common.Interfaces;
+namespace RMS.Application.Common.Interfaces.Services;
 
 public interface ICustomerService
 {

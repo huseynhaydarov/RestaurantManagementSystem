@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RMS.Application.Common.Interfaces;
+using RMS.Application.Common.Interfaces.Services;
 using RMS.Application.Requests.CustomerRequests;
 
 namespace RMS.WebAPI.Controllers;

@@ -1,10 +1,10 @@
 ﻿using RMS.Application.Common.Interfaces.Repositories;
-using RMS.Application.Common.Interfaces;
 using AutoMapper;
 using RMS.Application.Exceptions;
 using RMS.Application.Requests.CustomerRequests;
 using RMS.Application.Responses.CustomerResponses;
 using RMS.Domain.Entities;
+using RMS.Application.Common.Interfaces.Services;
 
 namespace RMS.Application.Services;
 
