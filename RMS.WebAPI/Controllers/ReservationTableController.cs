@@ -11,7 +11,7 @@ namespace RMS.WebAPI.Controllers;
 public class ReservationTableController(IReservationTableService reservationTableService) : ControllerBase
 {
     [HttpPost(ApiEndpoints.ReservationTable.Create)]
-    public async Task<IActionResult> Create([FromBody] CreateReservationTableRequestModel request, CancellationToken token)
+    public async Task<IActionResult> Create([FromBody] CreateTableRequestModel request, CancellationToken token)
     {
         var response = await reservationTableService.CreateAsync(request, token);
         return CreatedAtAction(nameof(Get), new { id = response.Id }, response);
@@ -32,7 +32,7 @@ public class ReservationTableController(IReservationTableService reservationTabl
     }
 
     [HttpPut(ApiEndpoints.ReservationTable.Update)]
-    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateReservationTableRequestModel request,
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateTableRequestModel request,
         CancellationToken token)
     {
         var response = await reservationTableService.UpdateAsync(request, token);

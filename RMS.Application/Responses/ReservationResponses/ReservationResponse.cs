@@ -13,6 +13,6 @@ public record ReservationResponse
     public DateTime Date { get; set; }
     public int NumberOfGuests { get; set; }
     public int CustomerId { get; set; }
-    public int ReservationTableId { get; set; }
+    public int TableId { get; set; }
 
 }

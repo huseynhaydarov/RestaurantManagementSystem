@@ -16,9 +16,9 @@ namespace RMS.Application.Common.Interfaces.Services
 
         Task<List<ReservationTableResponse>> GetAllAsync(CancellationToken token = default);
 
-        Task<ReservationTableResponse> CreateAsync(CreateReservationTableRequestModel request, CancellationToken token = default);
+        Task<ReservationTableResponse> CreateAsync(CreateTableRequestModel request, CancellationToken token = default);
 
-        Task<bool> UpdateAsync(UpdateReservationTableRequestModel request, CancellationToken token = default);
+        Task<bool> UpdateAsync(UpdateTableRequestModel request, CancellationToken token = default);
 
         Task<bool> DeleteAsync(int id, CancellationToken token = default);
     }

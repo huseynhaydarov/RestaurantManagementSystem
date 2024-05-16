@@ -49,7 +49,7 @@ builder.Services.AddScoped(typeof(IBaseRepository<MenuItem>), typeof(BaseReposit
 builder.Services.AddScoped(typeof(IBaseRepository<OrderItem>), typeof(BaseRepository<OrderItem>));
 builder.Services.AddScoped(typeof(IBaseRepository<Payment>), typeof(BaseRepository<Payment>));
 builder.Services.AddScoped(typeof(IBaseRepository<Reservation>), typeof(BaseRepository<Reservation>));
-builder.Services.AddScoped(typeof(IBaseRepository<ReservationTable>), typeof(BaseRepository<ReservationTable>));
+builder.Services.AddScoped(typeof(IBaseRepository<Table>), typeof(BaseRepository<Table>));
 
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();

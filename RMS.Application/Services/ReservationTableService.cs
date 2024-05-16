@@ -12,10 +12,10 @@ namespace RMS.Application.Services;
 
 public class ReservationTableService(IReservationTableRepository reservationTableRepository, IMapper mapper) : IReservationTableService
 {
-    public async Task<ReservationTableResponse> CreateAsync(CreateReservationTableRequestModel request,
+    public async Task<ReservationTableResponse> CreateAsync(CreateTableRequestModel request,
         CancellationToken token = default)
     {
-        var reservationTable = mapper.Map<ReservationTable>(request);
+        var reservationTable = mapper.Map<Table>(request);
         var response = await reservationTableRepository.CreateAsync(reservationTable, token);
         return mapper.Map<ReservationTableResponse>(response);
     }
@@ -49,16 +49,16 @@ public class ReservationTableService(IReservationTableRepository reservationTabl
         return mapper.Map<ReservationTableResponse>(response);
     }
 
-    public async Task<bool> UpdateAsync(UpdateReservationTableRequestModel request, CancellationToken token = default)
+    public async Task<bool> UpdateAsync(UpdateTableRequestModel request, CancellationToken token = default)
     {
         var reservationTable = await reservationTableRepository.GetAsync(request.Id, token);
 
         if (reservationTable is null)
         {
-            throw new NotFoundException(nameof(ReservationTable), request.Id);
+            throw new NotFoundException(nameof(Table), request.Id);
         }
 
-        reservationTable = mapper.Map<ReservationTable>(request);
+        reservationTable = mapper.Map<Table>(request);
         return await reservationTableRepository.UpdateAsync(reservationTable, token);
     }
 }

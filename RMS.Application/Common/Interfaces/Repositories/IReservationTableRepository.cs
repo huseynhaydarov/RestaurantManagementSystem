@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Common.Interfaces.Repositories;
 
-public interface IReservationTableRepository : IBaseRepository<ReservationTable>
+public interface IReservationTableRepository : IBaseRepository<Table>
 {
 
 }

@@ -46,8 +46,8 @@ public class AutoMapperConfiguration : Profile
         CreateMap<Reservation, ReservationResponse>();
         CreateMap<UpdateReservationRequestModel, Reservation>();
 
-        CreateMap<CreateReservationTableRequestModel, Reservation>();
+        CreateMap<CreateTableRequestModel, Reservation>();
         CreateMap<Customer, ReservationTableResponse>();
-        CreateMap<UpdateReservationTableRequestModel,Reservation>();
+        CreateMap<UpdateTableRequestModel,Reservation>();
     }
 }

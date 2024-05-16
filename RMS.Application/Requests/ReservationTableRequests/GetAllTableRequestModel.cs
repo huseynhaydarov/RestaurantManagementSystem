@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Requests.TableRequests;
 
-public record GetAllReservationTableRequestModel
+public record GetAllTableRequestModel
 {
     public IEnumerable<Customer> Items { get; init; } = Enumerable.Empty<Customer>();
 }
