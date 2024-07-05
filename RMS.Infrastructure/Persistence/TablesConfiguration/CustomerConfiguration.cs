@@ -17,5 +17,6 @@ public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
         builder.Property(c => c.FullName).HasMaxLength(100).IsRequired();
         builder.Property(c => c.Email).HasMaxLength(100).IsRequired();
         builder.Property(c => c.PhoneNumber).HasMaxLength(100).IsRequired();
+        builder.HasMany(c => c.Reservations).WithOne().HasForeignKey(c => c.CustomerId);
     }
 }
