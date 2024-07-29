@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace RMS.Application.Responses.TableResponses;
 
-public class SingleReservationTableResponseModel
+public class ReservationTableResponse
 {
+    public int Id { get; set; }
     public int Number { get; set; }
     public int Capacity { get; set; }
     public TableStatus Status { get; set; }

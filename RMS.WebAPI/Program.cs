@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using RMS.Application.Common.Interfaces;
 using RMS.Application.Common.Interfaces.Repositories;
+using RMS.Application.Common.Interfaces.Services;
 using RMS.Application.Mappers;
 using RMS.Application.Services;
 using RMS.Domain.Entities;
@@ -49,18 +49,25 @@ builder.Services.AddScoped(typeof(IBaseRepository<MenuItem>), typeof(BaseReposit
 builder.Services.AddScoped(typeof(IBaseRepository<OrderItem>), typeof(BaseRepository<OrderItem>));
 builder.Services.AddScoped(typeof(IBaseRepository<Payment>), typeof(BaseRepository<Payment>));
 builder.Services.AddScoped(typeof(IBaseRepository<Reservation>), typeof(BaseRepository<Reservation>));
-builder.Services.AddScoped(typeof(IBaseRepository<ReservationTable>), typeof(BaseRepository<ReservationTable>));
+builder.Services.AddScoped(typeof(IBaseRepository<Table>), typeof(BaseRepository<Table>));
+
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<IMenuItemRepository, MenuItemRepository>();
+builder.Services.AddScoped<IMenuItemService,  MenuItemService>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IOrderItemRepository, OrderItemRepository>();
+builder.Services.AddScoped<IOrderItemService, OrderItemService>();
+builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
+builder.Services.AddScoped<IPaymentService,  PaymentService>();
+builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
+builder.Services.AddScoped<IReservationService, ReservationService>();
+builder.Services.AddScoped<IReservationTableRepository, ReservationTableRepository>();
+builder.Services.AddScoped<IReservationTableService, ReservationTableService>();
 
 
 
-
-builder.Services.AddScoped<IBaseService<Customer>, CustomerService>();
-builder.Services.AddScoped<IBaseService<Order>, OrderService>();
-builder.Services.AddScoped<IBaseService<MenuItem>, MenuItemService>();
-builder.Services.AddScoped<IBaseService<OrderItem>, OrderItemService>();
-builder.Services.AddScoped<IBaseService<Payment>, PaymentService>();
-builder.Services.AddScoped<IBaseService<Reservation>, ReservationService>();
-builder.Services.AddScoped<IBaseService<ReservationTable>, ReservationTableService>();
 builder.Services.AddEndpointsApiExplorer();
 
 //builder.Services.AddSwaggerGen();

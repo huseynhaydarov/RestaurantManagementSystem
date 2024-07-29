@@ -23,38 +23,31 @@ public class AutoMapperConfiguration : Profile
     public AutoMapperConfiguration() 
     {
         CreateMap<CreateCustomerRequestModel, Customer>();
-        CreateMap<Customer, SingleCustomerResponseModel> ();
-        CreateMap<GetAllCustomerRequestModel, GetAllCustomerResponseModel>();
+        CreateMap<Customer, CustomerResponse> ();
         CreateMap<UpdateCustomerRequestModel, Customer>();
 
         CreateMap<CreateMenuItemRequestModel, MenuItem>();
-        CreateMap<MenuItem, SingleMenuItemResponseModel>();
-        CreateMap<GetAllMenuItemRequestModel, GetAllMenuItemResponseModel>();
+        CreateMap<MenuItem, MenuItemResponse>();
         CreateMap<UpdateMenuItemRequestModel, MenuItem>();
 
         CreateMap<CreateOrderRequestModel, Order>();
-        CreateMap<Order, SingleOrderResponseModel>();
-        CreateMap<GetAllOrderRequestModel, GetAllOrderResponseModel>();
+        CreateMap<Order, OrderResponse>();
         CreateMap<UpdateOrderRequestModel, Order>();
 
         CreateMap<CreateOrderItemRequestModel, OrderItem>();
-        CreateMap<OrderItem, SingleOrderItemReponseModel>();
-        CreateMap<GetAllOrderItemRequestModel, GetAllOrderItemReponseModel>();
+        CreateMap<OrderItem, OrderItemResponse>();
         CreateMap<UpdateOrderRequestModel, OrderItem>();
 
         CreateMap<CreatePaymentRequestModel, Payment>();
-        CreateMap<Payment, SinglePaymentResponseModel>();
-        CreateMap<GetAllPaymentRequestModel, GetAllPaymentResponseModel>();
+        CreateMap<Payment, PaymentResponse>();
         CreateMap<UpdateOrderRequestModel, Payment>();
 
         CreateMap<CreateReservationRequestModel, Reservation>();
-        CreateMap<Reservation, SingleReservationResponseModel>();
-        CreateMap<GetAllReservationRequestModel, GetAllReservationResponseModel>();
+        CreateMap<Reservation, ReservationResponse>();
         CreateMap<UpdateReservationRequestModel, Reservation>();
 
-        CreateMap<CreateReservationTableRequestModel, Customer>();
-        CreateMap<Customer, SingleReservationTableResponseModel>();
-        CreateMap<GetAllReservationTableRequestModel, GetAllReservationTableResponseModel >();
-        CreateMap<UpdateReservationTableRequestModel, Customer>();
+        CreateMap<CreateTableRequestModel, Reservation>();
+        CreateMap<Customer, ReservationTableResponse>();
+        CreateMap<UpdateTableRequestModel,Reservation>();
     }
 }
