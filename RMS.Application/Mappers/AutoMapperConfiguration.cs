@@ -20,10 +20,10 @@ namespace RMS.Application.Mappers;
 
 public class AutoMapperConfiguration : Profile
 {
-    public AutoMapperConfiguration() 
+    public AutoMapperConfiguration()
     {
         CreateMap<CreateCustomerRequestModel, Customer>();
-        CreateMap<Customer, CustomerResponse> ();
+        CreateMap<Customer, CustomerResponse>();
         CreateMap<UpdateCustomerRequestModel, Customer>();
 
         CreateMap<CreateMenuItemRequestModel, MenuItem>();
@@ -48,6 +48,6 @@ public class AutoMapperConfiguration : Profile
 
         CreateMap<CreateTableRequestModel, Reservation>();
         CreateMap<Customer, ReservationTableResponse>();
-        CreateMap<UpdateTableRequestModel,Reservation>();
+        CreateMap<UpdateTableRequestModel, Reservation>();
     }
 }

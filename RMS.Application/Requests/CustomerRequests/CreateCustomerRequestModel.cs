@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace RMS.Application.Requests.CustomerRequests;
 
-namespace RMS.Application.Requests.CustomerRequests;
-
-public record CreateCustomerRequestModel 
+public record CreateCustomerRequestModel
 {
     public string? FullName { get; set; }
     public string? Email { get; set; }

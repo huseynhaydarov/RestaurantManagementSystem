@@ -1,7 +1,5 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using RMS.Application.Common.Interfaces.Services;
-using RMS.Application.Requests.ReservationRequests;
 using RMS.Application.Requests.TableRequests;
 
 namespace RMS.WebAPI.Controllers;

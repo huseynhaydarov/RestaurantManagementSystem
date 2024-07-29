@@ -1,11 +1,4 @@
-﻿using RMS.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RMS.Application.Responses.CustomerResponses;
+﻿namespace RMS.Application.Responses.CustomerResponses;
 
 public record CustomerResponse
 {

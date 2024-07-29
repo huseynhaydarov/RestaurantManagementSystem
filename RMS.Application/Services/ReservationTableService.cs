@@ -2,9 +2,7 @@
 using RMS.Application.Common.Interfaces.Repositories;
 using RMS.Application.Common.Interfaces.Services;
 using RMS.Application.Exceptions;
-using RMS.Application.Requests.ReservationRequests;
 using RMS.Application.Requests.TableRequests;
-using RMS.Application.Responses.ReservationResponses;
 using RMS.Application.Responses.TableResponses;
 using RMS.Domain.Entities;
 

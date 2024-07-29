@@ -1,10 +1,10 @@
-﻿using RMS.Application.Common.Interfaces.Repositories;
-using AutoMapper;
+﻿using AutoMapper;
+using RMS.Application.Common.Interfaces.Repositories;
+using RMS.Application.Common.Interfaces.Services;
 using RMS.Application.Exceptions;
 using RMS.Application.Requests.CustomerRequests;
 using RMS.Application.Responses.CustomerResponses;
 using RMS.Domain.Entities;
-using RMS.Application.Common.Interfaces.Services;
 
 namespace RMS.Application.Services;
 
@@ -31,7 +31,7 @@ public class CustomerService(ICustomerRepository customerRepository, IMapper map
 
     public async Task<List<CustomerResponse>> GetAllAsync(CancellationToken token = default)
     {
-        
+
         var response = await customerRepository.GetAllAsync(token);
         return mapper.Map<List<CustomerResponse>>(response);
     }

@@ -1,12 +1,5 @@
-﻿using RMS.Application.Requests.ReservationRequests;
-using RMS.Application.Requests.TableRequests;
-using RMS.Application.Responses.ReservationResponses;
+﻿using RMS.Application.Requests.TableRequests;
 using RMS.Application.Responses.TableResponses;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RMS.Application.Common.Interfaces.Services
 {

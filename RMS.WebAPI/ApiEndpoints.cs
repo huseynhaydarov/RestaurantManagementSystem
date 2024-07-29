@@ -14,7 +14,7 @@ public static class ApiEndpoints
         public const string Delete = $"{Base}/{{id:int}}";
     }
 
-    public static class Order 
+    public static class Order
     {
         public const string Base = $"{ApiBase}/orders";
         public const string Create = Base;

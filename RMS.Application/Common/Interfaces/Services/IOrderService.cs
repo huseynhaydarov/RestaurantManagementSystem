@@ -1,13 +1,5 @@
-﻿using RMS.Application.Requests.CustomerRequests;
-using RMS.Application.Requests.OrderItemsRequests;
-using RMS.Application.Requests.OrderRequests;
-using RMS.Application.Responses.CustomerResponses;
+﻿using RMS.Application.Requests.OrderRequests;
 using RMS.Application.Responses.OrderResponses;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RMS.Application.Common.Interfaces.Services
 {

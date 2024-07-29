@@ -1,6 +1,4 @@
-﻿using RMS.Application.Requests.CustomerRequests;
-using RMS.Application.Requests.MenuItemRequestModel;
-using RMS.Application.Responses.CustomerResponses;
+﻿using RMS.Application.Requests.MenuItemRequestModel;
 using RMS.Application.Responses.MenuItemResponses;
 
 namespace RMS.Application.Common.Interfaces.Services
