@@ -8,6 +8,5 @@ public class MenuItemRepository : BaseRepository<MenuItem>, IMenuItemRepository
 {
     public MenuItemRepository(EFContext context) : base(context)
     {
-
     }
 }

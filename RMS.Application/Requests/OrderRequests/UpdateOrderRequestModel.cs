@@ -7,5 +7,4 @@ public record UpdateOrderRequestModel
     public string? Location { get; set; }
     public decimal TotalPrice { get; set; }
     public int CustomerId { get; set; }
-
 }

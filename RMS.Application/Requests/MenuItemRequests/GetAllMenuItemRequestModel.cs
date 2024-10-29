@@ -1,6 +1,6 @@
 ﻿using RMS.Domain.Entities;
 
-namespace RMS.Application.Requests.MenuItemRequestModel;
+namespace RMS.Application.Requests.MenuItemRequests;
 
 public record GetAllMenuItemRequestModel
 {

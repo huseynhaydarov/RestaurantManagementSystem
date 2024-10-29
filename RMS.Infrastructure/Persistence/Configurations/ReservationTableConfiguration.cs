@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using RMS.Domain.Entities;
 
-namespace RMS.Infrastructure.Persistence.TablesConfiguration;
+namespace RMS.Infrastructure.Persistence.Configurations;
 
 public class ReservationTableConfiguration : IEntityTypeConfiguration<Table>
 {

@@ -1,6 +1,6 @@
 ﻿using RMS.Domain.Enum;
 
-namespace RMS.Application.Responses.TableResponses;
+namespace RMS.Application.Responses.ReservationTableResponses;
 
 public class ReservationTableResponse
 {

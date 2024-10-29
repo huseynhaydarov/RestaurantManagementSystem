@@ -4,6 +4,4 @@ namespace RMS.Application.Common.Interfaces.Repositories;
 
 public interface IPaymentRepository : IBaseRepository<Payment>
 {
-
 }
-

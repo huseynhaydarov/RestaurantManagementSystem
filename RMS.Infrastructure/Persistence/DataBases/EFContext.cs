@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RMS.Domain.Abstract;
-using RMS.Infrastructure.Persistence.TablesConfiguration;
+using RMS.Infrastructure.Persistence.Configurations;
 
 namespace RMS.Infrastructure.Persistence.DataBases;
 
@@ -9,13 +9,14 @@ public class EFContext : DbContext
 {
     public EFContext(DbContextOptions<EFContext> options) : base(options)
     {
-
     }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseNpgsql("Host=localhost;Port=5433;Database=RMS;Username=postgres;Password=7878_Postgresql");
         base.OnConfiguring(optionsBuilder);
     }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);

@@ -1,6 +1,6 @@
 ﻿using RMS.Domain.Enum;
 
-namespace RMS.Application.Requests.TableRequests;
+namespace RMS.Application.Requests.ReservationTableRequests;
 
 public record CreateTableRequestModel
 {
@@ -8,5 +8,3 @@ public record CreateTableRequestModel
     public int Capacity { get; set; }
     public TableStatus Status { get; set; }
 }
-
-

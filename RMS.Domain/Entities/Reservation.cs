@@ -10,5 +10,4 @@ public class Reservation : EntityBase
 
     public int CustomerId { get; set; }
     public int TableId { get; set; }
-
 }

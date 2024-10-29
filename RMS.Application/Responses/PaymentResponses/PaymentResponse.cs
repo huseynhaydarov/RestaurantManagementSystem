@@ -11,4 +11,3 @@ public record PaymentResponse
     public PaymentStatus Status { get; set; }
     public int OrderId { get; set; }
 }
-

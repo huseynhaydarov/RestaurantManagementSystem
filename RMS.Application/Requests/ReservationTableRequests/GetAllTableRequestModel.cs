@@ -1,6 +1,6 @@
 ﻿using RMS.Domain.Entities;
 
-namespace RMS.Application.Requests.TableRequests;
+namespace RMS.Application.Requests.ReservationTableRequests;
 
 public record GetAllTableRequestModel
 {

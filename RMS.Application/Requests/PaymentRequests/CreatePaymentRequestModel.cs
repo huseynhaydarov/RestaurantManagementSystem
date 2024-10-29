@@ -10,5 +10,3 @@ public record CreatePaymentRequestModel
     public PaymentStatus Status { get; set; }
     public int OrderId { get; set; }
 }
-
-

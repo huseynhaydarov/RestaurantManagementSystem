@@ -6,4 +6,3 @@ public record GetAllCustomerRequestModel
 {
     public IEnumerable<Customer> Items { get; init; } = Enumerable.Empty<Customer>();
 }
-

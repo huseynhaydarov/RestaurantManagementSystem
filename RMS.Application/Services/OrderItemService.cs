@@ -21,17 +21,13 @@ public class OrderItemService(IOrderItemRepository orderItemRepository, IMapper 
     public async Task<bool> DeleteAsync(int id, CancellationToken token = default)
     {
         var orderItem = await orderItemRepository.GetAsync(id, token);
-        if (orderItem is null)
-        {
-            throw new NotFoundException(nameof(OrderItem), id);
-        }
+        if (orderItem is null) throw new NotFoundException(nameof(OrderItem), id);
 
         return await orderItemRepository.DeleteAsync(orderItem, token);
     }
 
     public async Task<List<OrderItemResponse>> GetAllAsync(CancellationToken token = default)
     {
-
         var response = await orderItemRepository.GetAllAsync(token);
         return mapper.Map<List<OrderItemResponse>>(response);
     }
@@ -40,10 +36,7 @@ public class OrderItemService(IOrderItemRepository orderItemRepository, IMapper 
     {
         var response = await orderItemRepository.GetAsync(id, token);
 
-        if (response is null)
-        {
-            throw new NotFoundException(nameof(OrderItem), id);
-        }
+        if (response is null) throw new NotFoundException(nameof(OrderItem), id);
 
         return mapper.Map<OrderItemResponse>(response);
     }
@@ -52,10 +45,7 @@ public class OrderItemService(IOrderItemRepository orderItemRepository, IMapper 
     {
         var orderItem = await orderItemRepository.GetAsync(request.Id, token);
 
-        if (orderItem is null)
-        {
-            throw new NotFoundException(nameof(OrderItem), request.Id);
-        }
+        if (orderItem is null) throw new NotFoundException(nameof(OrderItem), request.Id);
 
         orderItem = mapper.Map<OrderItem>(request);
         return await orderItemRepository.UpdateAsync(orderItem, token);

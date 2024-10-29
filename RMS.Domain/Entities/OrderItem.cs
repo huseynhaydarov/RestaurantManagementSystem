@@ -9,5 +9,4 @@ public class OrderItem : EntityBase
     public OrderStatus Status { get; set; }
     public MenuItem? MenuItem { get; set; }
     public int MenuItemId { get; set; }
-
 }

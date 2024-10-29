@@ -2,7 +2,6 @@
 using RMS.Domain.Entities;
 using RMS.Infrastructure.Persistence.DataBases;
 
-
 namespace RMS.Infrastructure.Persistence.Repositories;
 
 public class ReservationTableRepository : BaseRepository<Table>, IReservationTableRepository

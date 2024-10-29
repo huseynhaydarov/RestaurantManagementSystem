@@ -12,4 +12,3 @@ public class Payment : EntityBase
     public Order? Order { get; set; }
     public int OrderId { get; set; }
 }
-

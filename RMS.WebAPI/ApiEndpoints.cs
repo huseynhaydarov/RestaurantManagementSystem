@@ -33,6 +33,7 @@ public static class ApiEndpoints
         public const string Update = $"{Base}/{{id:int}}";
         public const string Delete = $"{Base}/{{id:int}}";
     }
+
     public static class MenuItem
     {
         public const string Base = $"{ApiBase}/menuitems";
@@ -42,6 +43,7 @@ public static class ApiEndpoints
         public const string Update = $"{Base}/{{id:int}}";
         public const string Delete = $"{Base}/{{id:int}}";
     }
+
     public static class Payment
     {
         public const string Base = $"{ApiBase}/payments";
@@ -51,6 +53,7 @@ public static class ApiEndpoints
         public const string Update = $"{Base}/{{id:int}}";
         public const string Delete = $"{Base}/{{id:int}}";
     }
+
     public static class Reservation
     {
         public const string Base = $"{ApiBase}/reservations";
@@ -60,6 +63,7 @@ public static class ApiEndpoints
         public const string Update = $"{Base}/{{id:int}}";
         public const string Delete = $"{Base}/{{id:int}}";
     }
+
     public static class ReservationTable
     {
         public const string Base = $"{ApiBase}/tables";

@@ -7,5 +7,4 @@ public record ReservationResponse
     public int NumberOfGuests { get; set; }
     public int CustomerId { get; set; }
     public int TableId { get; set; }
-
 }

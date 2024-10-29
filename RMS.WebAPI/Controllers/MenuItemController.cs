@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RMS.Application.Common.Interfaces.Services;
-using RMS.Application.Requests.MenuItemRequestModel;
+using RMS.Application.Requests.MenuItemRequests;
 
 namespace RMS.WebAPI.Controllers;
 

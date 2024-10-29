@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RMS.Application.Common.Interfaces.Services;
-using RMS.Application.Requests.TableRequests;
+using RMS.Application.Requests.ReservationTableRequests;
 
 namespace RMS.WebAPI.Controllers;
 

@@ -1,20 +1,19 @@
 ﻿using AutoMapper;
 using RMS.Application.Requests.CustomerRequests;
-using RMS.Application.Requests.MenuItemRequestModel;
+using RMS.Application.Requests.MenuItemRequests;
 using RMS.Application.Requests.OrderItemsRequests;
 using RMS.Application.Requests.OrderRequests;
 using RMS.Application.Requests.PaymentRequests;
 using RMS.Application.Requests.ReservationRequests;
-using RMS.Application.Requests.TableRequests;
+using RMS.Application.Requests.ReservationTableRequests;
 using RMS.Application.Responses.CustomerResponses;
 using RMS.Application.Responses.MenuItemResponses;
 using RMS.Application.Responses.OrderItemResponses;
 using RMS.Application.Responses.OrderResponses;
 using RMS.Application.Responses.PaymentResponses;
 using RMS.Application.Responses.ReservationResponses;
-using RMS.Application.Responses.TableResponses;
+using RMS.Application.Responses.ReservationTableResponses;
 using RMS.Domain.Entities;
-
 
 namespace RMS.Application.Mappers;
 
