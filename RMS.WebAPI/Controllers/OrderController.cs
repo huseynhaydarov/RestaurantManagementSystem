@@ -6,7 +6,6 @@ namespace RMS.WebAPI.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-
 public class OrderController(IOrderService orderService) : ControllerBase
 {
     [HttpPost(ApiEndpoints.Order.Create)]
@@ -32,7 +31,7 @@ public class OrderController(IOrderService orderService) : ControllerBase
 
     [HttpPut(ApiEndpoints.Order.Update)]
     public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateOrderRequestModel request,
-    CancellationToken token)
+        CancellationToken token)
     {
         var response = await orderService.UpdateAsync(request, token);
         return Ok(response);

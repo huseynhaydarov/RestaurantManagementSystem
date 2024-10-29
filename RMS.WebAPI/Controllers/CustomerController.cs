@@ -5,7 +5,7 @@ using RMS.Application.Requests.CustomerRequests;
 namespace RMS.WebAPI.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class CustomerController(ICustomerService customerService) : ControllerBase
 {
     [HttpPost(ApiEndpoints.Customer.Create)]

@@ -1,21 +1,14 @@
-﻿using RMS.Domain.Enum;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
+using RMS.Domain.Enum;
 
-namespace RMS.Application.Requests.MenuItemRequestModel;
+namespace RMS.Application.Requests.MenuItemRequests;
 
 public record UpdateMenuItemRequestModel
 {
-    [JsonIgnore]
-    public int Id { get; set; }
+    [JsonIgnore] public int Id { get; set; }
+
     public string? Name { get; set; }
     public string? Description { get; set; }
     public decimal Price { get; set; }
     public FoodCategory Category { get; set; }
 }
-
-

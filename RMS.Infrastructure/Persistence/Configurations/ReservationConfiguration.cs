@@ -1,13 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using RMS.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace RMS.Infrastructure.Persistence.TablesConfiguration;
+namespace RMS.Infrastructure.Persistence.Configurations;
 
 public class ReservationConfiguration : IEntityTypeConfiguration<Reservation>
 {
@@ -16,6 +11,5 @@ public class ReservationConfiguration : IEntityTypeConfiguration<Reservation>
         builder.HasKey(rc => rc.Id);
         builder.Property(rc => rc.ReservedDate).IsRequired();
         builder.Property(rc => rc.NumberOfGuests).IsRequired();
-        
     }
 }
