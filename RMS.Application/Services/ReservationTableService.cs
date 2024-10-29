@@ -2,15 +2,14 @@
 using RMS.Application.Common.Interfaces.Repositories;
 using RMS.Application.Common.Interfaces.Services;
 using RMS.Application.Exceptions;
-using RMS.Application.Requests.ReservationRequests;
-using RMS.Application.Requests.TableRequests;
-using RMS.Application.Responses.ReservationResponses;
-using RMS.Application.Responses.TableResponses;
+using RMS.Application.Requests.ReservationTableRequests;
+using RMS.Application.Responses.ReservationTableResponses;
 using RMS.Domain.Entities;
 
 namespace RMS.Application.Services;
 
-public class ReservationTableService(IReservationTableRepository reservationTableRepository, IMapper mapper) : IReservationTableService
+public class ReservationTableService(IReservationTableRepository reservationTableRepository, IMapper mapper)
+    : IReservationTableService
 {
     public async Task<ReservationTableResponse> CreateAsync(CreateTableRequestModel request,
         CancellationToken token = default)
@@ -24,10 +23,7 @@ public class ReservationTableService(IReservationTableRepository reservationTabl
     {
         var reservationTable = await reservationTableRepository.GetAsync(id, token);
 
-        if (reservationTable is null)
-        {
-            throw new NotFoundException(nameof(reservationTable), id);
-        }
+        if (reservationTable is null) throw new NotFoundException(nameof(reservationTable), id);
         return await reservationTableRepository.DeleteAsync(reservationTable, token);
     }
 
@@ -41,10 +37,7 @@ public class ReservationTableService(IReservationTableRepository reservationTabl
     {
         var response = await reservationTableRepository.GetAsync(id, token);
 
-        if (response is null)
-        {
-            throw new NotFoundException(nameof(Reservation), id);
-        }
+        if (response is null) throw new NotFoundException(nameof(Reservation), id);
 
         return mapper.Map<ReservationTableResponse>(response);
     }
@@ -53,10 +46,7 @@ public class ReservationTableService(IReservationTableRepository reservationTabl
     {
         var reservationTable = await reservationTableRepository.GetAsync(request.Id, token);
 
-        if (reservationTable is null)
-        {
-            throw new NotFoundException(nameof(Table), request.Id);
-        }
+        if (reservationTable is null) throw new NotFoundException(nameof(Table), request.Id);
 
         reservationTable = mapper.Map<Table>(request);
         return await reservationTableRepository.UpdateAsync(reservationTable, token);

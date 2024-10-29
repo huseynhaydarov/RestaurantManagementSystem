@@ -25,7 +25,7 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(options =>
 {
-    options.AddSecurityDefinition(name: "Bearer", securityScheme: new OpenApiSecurityScheme
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
         Description = "Enter the Bearer Authorization string as following: `Bearer Generated-JWT-Token`",
@@ -54,18 +54,17 @@ builder.Services.AddScoped(typeof(IBaseRepository<Table>), typeof(BaseRepository
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IMenuItemRepository, MenuItemRepository>();
-builder.Services.AddScoped<IMenuItemService,  MenuItemService>();
+builder.Services.AddScoped<IMenuItemService, MenuItemService>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IOrderItemRepository, OrderItemRepository>();
 builder.Services.AddScoped<IOrderItemService, OrderItemService>();
 builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
-builder.Services.AddScoped<IPaymentService,  PaymentService>();
+builder.Services.AddScoped<IPaymentService, PaymentService>();
 builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
 builder.Services.AddScoped<IReservationService, ReservationService>();
 builder.Services.AddScoped<IReservationTableRepository, ReservationTableRepository>();
 builder.Services.AddScoped<IReservationTableService, ReservationTableService>();
-
 
 
 builder.Services.AddEndpointsApiExplorer();
@@ -73,7 +72,8 @@ builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();
 
 builder.Services.AddAutoMapper(typeof(AutoMapperConfiguration).Assembly);
-builder.Services.AddDbContext<EFContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<EFContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 

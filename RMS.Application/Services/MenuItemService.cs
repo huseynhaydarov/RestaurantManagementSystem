@@ -2,9 +2,11 @@
 using RMS.Application.Common.Interfaces.Repositories;
 using RMS.Application.Common.Interfaces.Services;
 using RMS.Application.Exceptions;
-using RMS.Application.Requests.MenuItemRequestModel;
+using RMS.Application.Requests.MenuItemRequests;
 using RMS.Application.Responses.MenuItemResponses;
 using RMS.Domain.Entities;
+
+namespace RMS.Application.Services;
 
 public class MenuItemService(IMenuItemRepository menuItemRepository, IMapper mapper) : IMenuItemService
 {
@@ -19,17 +21,13 @@ public class MenuItemService(IMenuItemRepository menuItemRepository, IMapper map
     public async Task<bool> DeleteAsync(int id, CancellationToken token = default)
     {
         var menuItem = await menuItemRepository.GetAsync(id, token);
-        if (menuItem is null)
-        {
-            throw new NotFoundException(nameof(Customer), id);
-        }
+        if (menuItem is null) throw new NotFoundException(nameof(Customer), id);
 
         return await menuItemRepository.DeleteAsync(menuItem, token);
     }
 
     public async Task<List<MenuItemResponse>> GetAllAsync(CancellationToken token = default)
     {
-
         var response = await menuItemRepository.GetAllAsync(token);
         return mapper.Map<List<MenuItemResponse>>(response);
     }
@@ -38,10 +36,7 @@ public class MenuItemService(IMenuItemRepository menuItemRepository, IMapper map
     {
         var response = await menuItemRepository.GetAsync(id, token);
 
-        if (response is null)
-        {
-            throw new NotFoundException(nameof(MenuItem), id);
-        }
+        if (response is null) throw new NotFoundException(nameof(MenuItem), id);
 
         return mapper.Map<MenuItemResponse>(response);
     }
@@ -50,10 +45,7 @@ public class MenuItemService(IMenuItemRepository menuItemRepository, IMapper map
     {
         var menuItem = await menuItemRepository.GetAsync(request.Id, token);
 
-        if (menuItem is null)
-        {
-            throw new NotFoundException(nameof(MenuItem), request.Id);
-        }
+        if (menuItem is null) throw new NotFoundException(nameof(MenuItem), request.Id);
 
         menuItem = mapper.Map<MenuItem>(request);
         return await menuItemRepository.UpdateAsync(menuItem, token);

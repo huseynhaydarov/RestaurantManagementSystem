@@ -1,10 +1,6 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using RMS.Application.Common.Interfaces.Services;
-using RMS.Application.Requests.CustomerRequests;
-using RMS.Application.Requests.MenuItemRequestModel;
-using RMS.Application.Responses.MenuItemResponses;
-using RMS.Domain.Entities;
+using RMS.Application.Requests.MenuItemRequests;
 
 namespace RMS.WebAPI.Controllers;
 

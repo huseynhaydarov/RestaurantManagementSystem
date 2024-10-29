@@ -1,17 +1,12 @@
-﻿using RMS.Domain.Enum;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
+using RMS.Domain.Enum;
 
-namespace RMS.Application.Requests.TableRequests;
+namespace RMS.Application.Requests.ReservationTableRequests;
 
 public record UpdateTableRequestModel
 {
-    [JsonIgnore]
-    public int Id { get; set; } 
+    [JsonIgnore] public int Id { get; set; }
+
     public int Number { get; set; }
     public int Capacity { get; set; }
     public TableStatus Status { get; set; }

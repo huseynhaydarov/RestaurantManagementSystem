@@ -10,7 +10,7 @@ namespace RMS.Application.Services;
 
 public class OrderService(IOrderRepository orderRepository, IMapper mapper) : IOrderService
 {
-    public async Task<OrderResponse> CreateAsync(CreateOrderRequestModel request, 
+    public async Task<OrderResponse> CreateAsync(CreateOrderRequestModel request,
         CancellationToken token = default)
     {
         var order = mapper.Map<Order>(request);
@@ -22,10 +22,7 @@ public class OrderService(IOrderRepository orderRepository, IMapper mapper) : IO
     {
         var order = await orderRepository.GetAsync(id, token);
 
-        if(order is null)
-        {
-            throw new NotFoundException(nameof(order), id);
-        }
+        if (order is null) throw new NotFoundException(nameof(order), id);
         return await orderRepository.DeleteAsync(order, token);
     }
 
@@ -39,10 +36,7 @@ public class OrderService(IOrderRepository orderRepository, IMapper mapper) : IO
     {
         var response = await orderRepository.GetAsync(id, token);
 
-        if(response is null)
-        {
-            throw new NotFoundException(nameof(Order), id);
-        }
+        if (response is null) throw new NotFoundException(nameof(Order), id);
 
         return mapper.Map<OrderResponse>(response);
     }
@@ -51,10 +45,7 @@ public class OrderService(IOrderRepository orderRepository, IMapper mapper) : IO
     {
         var order = await orderRepository.GetAsync(request.Id, token);
 
-        if (order is null)
-        {
-            throw new NotFoundException(nameof(Order), request.Id);
-        }
+        if (order is null) throw new NotFoundException(nameof(Order), request.Id);
 
         order = mapper.Map<Order>(request);
         return await orderRepository.UpdateAsync(order, token);

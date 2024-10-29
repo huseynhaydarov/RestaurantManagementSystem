@@ -22,10 +22,7 @@ public class PaymentService(IPaymentRepository paymentRepository, IMapper mapper
     {
         var payment = await paymentRepository.GetAsync(id, token);
 
-        if (payment is null)
-        {
-            throw new NotFoundException(nameof(payment), id);
-        }
+        if (payment is null) throw new NotFoundException(nameof(payment), id);
         return await paymentRepository.DeleteAsync(payment, token);
     }
 
@@ -39,10 +36,7 @@ public class PaymentService(IPaymentRepository paymentRepository, IMapper mapper
     {
         var response = await paymentRepository.GetAsync(id, token);
 
-        if (response is null)
-        {
-            throw new NotFoundException(nameof(Payment), id);
-        }
+        if (response is null) throw new NotFoundException(nameof(Payment), id);
 
         return mapper.Map<PaymentResponse>(response);
     }
@@ -51,13 +45,9 @@ public class PaymentService(IPaymentRepository paymentRepository, IMapper mapper
     {
         var payment = await paymentRepository.GetAsync(request.Id, token);
 
-        if (payment is null)
-        {
-            throw new NotFoundException(nameof(Payment), request.Id);
-        }
+        if (payment is null) throw new NotFoundException(nameof(Payment), request.Id);
 
         payment = mapper.Map<Payment>(request);
         return await paymentRepository.UpdateAsync(payment, token);
     }
 }
-

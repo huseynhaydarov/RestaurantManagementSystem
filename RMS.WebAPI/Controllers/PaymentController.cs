@@ -1,10 +1,6 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-using RMS.Application.Common.Interfaces;
+﻿using Microsoft.AspNetCore.Mvc;
 using RMS.Application.Common.Interfaces.Services;
-using RMS.Application.Requests.CustomerRequests;
 using RMS.Application.Requests.PaymentRequests;
-
 
 namespace RMS.WebAPI.Controllers;
 
